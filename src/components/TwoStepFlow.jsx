@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import FeedbackSlider from './FeedbackSlider'
@@ -11,9 +11,24 @@ import { sendAnonymousMessage } from '@/lib/messageService'
 export default function TwoStepFlow({ user }) {
   const [step, setStep] = useState(1) // 1 or 2
   const [isLoading, setIsLoading] = useState(false)
+  const [clickCount, setClickCount] = useState(133) // Animated counter
   const router = useRouter()
 
   const displayName = user.username || `user ${user.nocap_id}`
+
+  // Animate counter - changes every second by -2 to +3 (never 0)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setClickCount(prev => {
+        // Generate random change between -2 and +3, excluding 0
+        const changes = [-2, -1, 1, 2, 3]
+        const randomChange = changes[Math.floor(Math.random() * changes.length)]
+        return prev + randomChange
+      })
+    }, 1000) // Every 1 second
+
+    return () => clearInterval(interval)
+  }, [])
 
   // Handle feedback submission (Screen 1)
   const handleFeedbackSubmit = async (rating) => {
@@ -109,19 +124,34 @@ export default function TwoStepFlow({ user }) {
 
       {/* Bottom Section */}
       <div className="relative z-10 w-full max-w-lg mt-auto mb-8 flex flex-col items-center gap-4">
-        {/* Counter - SF Pro Bold, #191919 */}
+        {/* Counter - SF Pro Bold, #191919 - Animated */}
         <p className="text-base sm:text-lg counter-text">
-          ↓ 133 people just clicked ↓
+          ↓ {clickCount} people just clicked ↓
         </p>
 
-        {/* CTA Button */}
-        <button className="transition-transform hover:translate-x-1 hover:translate-y-1 w-full max-w-md">
+        {/* CTA Button - Animated */}
+        <motion.button
+          className="w-full max-w-md"
+          animate={{
+            scale: [1, 1.05, 1],
+            boxShadow: [
+              '0 0 0px rgba(236, 72, 153, 0)',
+              '0 0 20px rgba(236, 72, 153, 0.6)',
+              '0 0 0px rgba(236, 72, 153, 0)'
+            ]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
           <img
             src="/images/feedback/cta-button.png"
             alt="Get your own ratings now!"
             className="w-full"
           />
-        </button>
+        </motion.button>
 
         {/* Footer Links - SF Pro Heavy, #565300 at 20% opacity */}
         <div className="flex gap-6 text-sm mt-2">
