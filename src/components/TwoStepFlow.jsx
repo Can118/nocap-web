@@ -133,12 +133,12 @@ export default function TwoStepFlow({ user }) {
         <motion.button
           className="w-full max-w-md"
           animate={{
-            rotate: [0, -2, 0, 2, 0, 0]
+            rotate: [0, -2, 2, -2, 0]
           }}
           transition={{
             duration: 0.6,
             repeat: Infinity,
-            repeatDelay: 2.5,
+            repeatDelay: 1.4,
             ease: "easeInOut"
           }}
         >
