@@ -11,8 +11,10 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
   const handleDrag = (event, info) => {
     if (!sliderRef.current) return
 
-    const sliderWidth = sliderRef.current.offsetWidth - 64 // minus knob width
-    const position = Math.max(0, Math.min(info.point.x, sliderWidth))
+    const containerRect = sliderRef.current.getBoundingClientRect()
+    const sliderWidth = containerRect.width - 56 // minus knob width
+    const relativeX = info.point.x - containerRect.left - 28 // account for knob radius
+    const position = Math.max(0, Math.min(relativeX, sliderWidth))
 
     // Convert position (0 to sliderWidth) to rating (-100 to +100)
     const normalizedRating = (position / sliderWidth) * 200 - 100
@@ -31,80 +33,69 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
   // Convert rating (-100 to +100) to percentage (0 to 100) for UI
   const sliderPercentage = ((rating + 100) / 200) * 100
 
-  // Determine color based on rating
-  const getGradientColor = () => {
-    if (rating < -30) return 'from-red-500 to-red-600'
-    if (rating > 30) return 'from-green-500 to-green-600'
-    return 'from-gray-400 to-gray-500'
-  }
-
   return (
-    <div className="w-full max-w-md mx-auto p-6">
-      <div className="bg-white rounded-3xl p-8 shadow-2xl">
-        <h2 className="text-2xl font-bold text-center mb-2 text-gray-800">
-          Rate {receiverName}
-        </h2>
-        <p className="text-center text-gray-600 mb-8">
-          Slide to share your feedback
-        </p>
+    <div className="w-full max-w-md mx-auto">
+      {/* Anonymous Badge */}
+      <div className="flex justify-center mb-6">
+        <img
+          src="/images/feedback/anonymous-badge.svg"
+          alt="100% anonymous"
+          className="h-10"
+        />
+      </div>
 
-        {/* Slider Track */}
+      {/* Slider Container with integrated emojis and labels */}
+      <div className="relative mb-8">
+        {/* Background container image */}
+        <img
+          src="/images/feedback/sliderbar_container.svg"
+          alt="Slider container"
+          className="w-full"
+        />
+
+        {/* Interactive slider overlay - positioned in the middle area */}
         <div
           ref={sliderRef}
-          className="relative h-16 bg-gradient-to-r from-red-100 via-gray-100 to-green-100 rounded-full mb-4 overflow-visible"
+          className="absolute inset-x-0 mx-8 top-1/2 -translate-y-1/2 h-4"
+          style={{ marginTop: '10px' }} // Fine-tune vertical position if needed
         >
-          {/* Labels */}
-          <div className="absolute inset-0 flex items-center justify-between px-4 text-sm font-medium pointer-events-none">
-            <span className="text-red-600">hell no</span>
-            <span className="text-gray-500">neutral</span>
-            <span className="text-green-600">yeah</span>
-          </div>
+          {/* Invisible track for drag constraints */}
+          <div className="relative w-full h-4">
+            {/* Blue to pink gradient track */}
+            <div className="absolute inset-0 bg-gradient-to-r from-nocap-blue to-nocap-pink rounded-full border-2 border-black" />
 
-          {/* Draggable Knob */}
-          <motion.div
-            drag="x"
-            dragConstraints={sliderRef}
-            dragElastic={0}
-            dragMomentum={false}
-            onDrag={handleDrag}
-            style={{
-              left: `calc(${sliderPercentage}% - 32px)`, // Center the knob
-            }}
-            className={`absolute top-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br ${getGradientColor()} rounded-full shadow-lg cursor-grab active:cursor-grabbing flex items-center justify-center transition-colors`}
-          >
-            <div className="text-white text-2xl font-bold">
-              {rating === 0 ? '·' : rating > 0 ? '👍' : '👎'}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Rating Display */}
-        <div className="text-center mb-6">
-          <div className="text-4xl font-bold text-gray-800 mb-1">
-            {Math.abs(rating)}%
-          </div>
-          <div className="text-lg text-gray-600">
-            {rating > 0 ? 'yeah' : rating < 0 ? 'hell no' : 'neutral'}
+            {/* Draggable Knob - Large Pink Circle */}
+            <motion.div
+              drag="x"
+              dragConstraints={sliderRef}
+              dragElastic={0}
+              dragMomentum={false}
+              onDrag={handleDrag}
+              style={{
+                left: `calc(${sliderPercentage}% - 28px)`, // Center the 56px knob
+              }}
+              className="absolute top-1/2 -translate-y-1/2 w-14 h-14 bg-nocap-pink rounded-full border-3 border-black shadow-lg cursor-grab active:cursor-grabbing transition-transform hover:scale-105"
+            />
           </div>
         </div>
-
-        {/* Submit Button */}
-        <button
-          onClick={handleSubmit}
-          disabled={!hasInteracted || isLoading}
-          className={`w-full py-4 rounded-full font-bold text-lg transition-all ${
-            hasInteracted && !isLoading
-              ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:shadow-lg hover:scale-105'
-              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-          }`}
-        >
-          {isLoading ? 'Submitting...' : hasInteracted ? 'Continue →' : 'Drag the slider first'}
-        </button>
-
-        <p className="text-center text-xs text-gray-400 mt-4">
-          Completely anonymous - they won't know it's you
-        </p>
       </div>
+
+      {/* Continue Button */}
+      <button
+        onClick={handleSubmit}
+        disabled={!hasInteracted || isLoading}
+        className={`w-full transition-all ${
+          hasInteracted && !isLoading
+            ? 'opacity-100 hover:translate-x-1 hover:translate-y-1'
+            : 'opacity-50 cursor-not-allowed'
+        }`}
+      >
+        <img
+          src="/images/feedback/send-button.png"
+          alt={isLoading ? 'Submitting...' : hasInteracted ? 'Send' : 'Drag the slider first'}
+          className="w-full"
+        />
+      </button>
     </div>
   )
 }
