@@ -8,6 +8,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
   const [rating, setRating] = useState(0) // -100 to +100
   const [hasInteracted, setHasInteracted] = useState(false)
   const sliderRef = useRef(null)
+  const dragContainerRef = useRef(null)
 
   const handleDrag = (event, info) => {
     if (!sliderRef.current) return
@@ -56,8 +57,8 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
           className="w-full h-auto"
         />
 
-        {/* WebGradientSlider overlay - positioned in the middle */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {/* WebGradientSlider overlay - positioned in the yellow card area */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ paddingTop: '8%' }}>
           <div className="w-[78%]">
             <WebGradientSlider
               percentage={sliderPercentage}
@@ -70,11 +71,12 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
         <div
           ref={sliderRef}
           className="absolute inset-0 flex items-center justify-center"
+          style={{ paddingTop: '8%' }}
         >
-          <div className="relative w-[78%]" style={{ height: '60px' }}>
+          <div ref={dragContainerRef} className="relative w-[78%]" style={{ height: '60px' }}>
             <motion.div
               drag="x"
-              dragConstraints={sliderRef}
+              dragConstraints={dragContainerRef}
               dragElastic={0}
               dragMomentum={false}
               onDrag={handleDrag}
