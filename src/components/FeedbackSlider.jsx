@@ -12,12 +12,19 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
     if (!sliderRef.current) return
 
     const containerRect = sliderRef.current.getBoundingClientRect()
-    const sliderWidth = containerRect.width - 56 // minus knob width
-    const relativeX = info.point.x - containerRect.left - 28 // account for knob radius
-    const position = Math.max(0, Math.min(relativeX, sliderWidth))
+    const sliderWidth = containerRect.width
+    const knobWidth = sliderWidth * 0.22 // 22% of slider width
 
-    // Convert position (0 to sliderWidth) to rating (-100 to +100)
-    const normalizedRating = (position / sliderWidth) * 200 - 100
+    // Calculate position relative to container
+    const relativeX = info.point.x - containerRect.left - (knobWidth / 2)
+    const maxX = sliderWidth - knobWidth
+    const position = Math.max(0, Math.min(relativeX, maxX))
+
+    // Convert position to percentage (0-100)
+    const percentage = (position / maxX) * 100
+
+    // Convert percentage to rating (-100 to +100)
+    const normalizedRating = (percentage / 100) * 200 - 100
     setRating(Math.round(normalizedRating))
 
     if (!hasInteracted) {
@@ -34,37 +41,33 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
   const sliderPercentage = ((rating + 100) / 200) * 100
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      {/* Anonymous Badge */}
-      <div className="flex justify-center mb-6">
-        <img
-          src="/images/feedback/anonymous-badge.svg"
-          alt="100% anonymous"
-          className="h-10"
-        />
-      </div>
+    <div className="w-full max-w-md mx-auto px-4">
+      {/* Question Text */}
+      <h2 className="text-center text-3xl sm:text-4xl font-black mb-6 text-black text-stroke-yellow px-4">
+        you think i stalk u on a fake account?
+      </h2>
 
-      {/* Slider Container with integrated emojis and labels */}
-      <div className="relative mb-8">
-        {/* Background container image */}
+      {/* Slider Container - using the SVG with emojis */}
+      <div className="relative mb-6">
         <img
           src="/images/feedback/sliderbar_container.svg"
-          alt="Slider container"
+          alt="Slider"
           className="w-full"
         />
 
-        {/* Interactive slider overlay - positioned in the middle area */}
+        {/* Invisible overlay for drag interaction */}
         <div
           ref={sliderRef}
-          className="absolute inset-x-0 mx-8 top-1/2 -translate-y-1/2 h-4"
-          style={{ marginTop: '10px' }} // Fine-tune vertical position if needed
+          className="absolute inset-0 flex items-center px-4 sm:px-6"
         >
-          {/* Invisible track for drag constraints */}
-          <div className="relative w-full h-4">
-            {/* Blue to pink gradient track */}
-            <div className="absolute inset-0 bg-gradient-to-r from-nocap-blue to-nocap-pink rounded-full border-2 border-black" />
+          {/* Gradient Slider Bar */}
+          <div className="relative w-full" style={{ height: '36px' }}>
+            {/* Blue to Pink gradient bar */}
+            <div className="absolute inset-0 rounded-full overflow-hidden">
+              <div className="w-full h-full bg-gradient-to-r from-[#53B4F9] to-[#F80261]" />
+            </div>
 
-            {/* Draggable Knob - Large Pink Circle */}
+            {/* Draggable Knob - Pill shape with pink border */}
             <motion.div
               drag="x"
               dragConstraints={sliderRef}
@@ -72,19 +75,31 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
               dragMomentum={false}
               onDrag={handleDrag}
               style={{
-                left: `calc(${sliderPercentage}% - 28px)`, // Center the 56px knob
+                width: '22%',
+                height: '42px',
+                left: `${sliderPercentage}%`,
+                x: '-50%',
               }}
-              className="absolute top-1/2 -translate-y-1/2 w-14 h-14 bg-nocap-pink rounded-full border-3 border-black shadow-lg cursor-grab active:cursor-grabbing transition-transform hover:scale-105"
+              className="absolute top-1/2 -translate-y-1/2 rounded-full border-[6px] border-[#FF1B90] bg-transparent cursor-grab active:cursor-grabbing"
             />
           </div>
         </div>
       </div>
 
-      {/* Continue Button */}
+      {/* Anonymous Badge */}
+      <div className="flex justify-center mb-6">
+        <img
+          src="/images/feedback/anonymous-badge.svg"
+          alt="100% anonymous"
+          className="h-8 sm:h-10"
+        />
+      </div>
+
+      {/* Send Button */}
       <button
         onClick={handleSubmit}
         disabled={!hasInteracted || isLoading}
-        className={`w-full transition-all ${
+        className={`w-full max-w-sm mx-auto block transition-all ${
           hasInteracted && !isLoading
             ? 'opacity-100 hover:translate-x-1 hover:translate-y-1'
             : 'opacity-50 cursor-not-allowed'

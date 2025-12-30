@@ -50,7 +50,7 @@ export default function TwoStepFlow({ user }) {
   }
 
   return (
-    <div className="relative min-h-screen bg-nocap-cream flex flex-col items-center justify-center p-4 overflow-hidden">
+    <div className="relative min-h-screen bg-nocap-cream flex flex-col items-center p-4 overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-30">
         <img
@@ -61,16 +61,16 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Logo Badge at Top */}
-      <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="relative z-20 mt-8 mb-4">
         <img
           src="/images/feedback/nocap-logo.svg"
           alt="NoCap.bio"
-          className="h-12"
+          className="h-16 sm:h-20"
         />
       </div>
 
       {/* Progress Indicator */}
-      <div className="absolute top-24 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+      <div className="relative z-10 flex gap-2 mb-8">
         <div
           className={`w-12 h-2 rounded-full border-2 border-black transition-all ${
             step === 1 ? 'bg-black' : 'bg-transparent'
@@ -84,7 +84,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Step Content with Animation */}
-      <div className="relative z-10 w-full max-w-md mt-16 mb-8">
+      <div className="relative z-10 w-full max-w-lg flex-1 flex flex-col justify-center">
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div
@@ -121,30 +121,31 @@ export default function TwoStepFlow({ user }) {
         </AnimatePresence>
       </div>
 
-      {/* Counter */}
-      <div className="relative z-10 mb-4 text-center">
-        <p className="text-sm font-bold text-black">
+      {/* Bottom Section */}
+      <div className="relative z-10 w-full max-w-lg mt-auto mb-8 flex flex-col items-center gap-4">
+        {/* Counter */}
+        <p className="text-base sm:text-lg font-bold text-black">
           ↓ 133 people just clicked ↓
         </p>
-      </div>
 
-      {/* CTA Button */}
-      <button className="relative z-10 transition-transform hover:translate-x-1 hover:translate-y-1">
-        <img
-          src="/images/feedback/cta-button.svg"
-          alt="Get your own ratings now!"
-          className="h-14"
-        />
-      </button>
+        {/* CTA Button */}
+        <button className="transition-transform hover:translate-x-1 hover:translate-y-1 w-full max-w-md">
+          <img
+            src="/images/feedback/cta-button.svg"
+            alt="Get your own ratings now!"
+            className="w-full"
+          />
+        </button>
 
-      {/* Footer Links */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-6 text-sm z-10">
-        <a href="/terms" className="text-gray-600 hover:text-black underline transition-colors">
-          Terms
-        </a>
-        <a href="/privacy" className="text-gray-600 hover:text-black underline transition-colors">
-          Privacy
-        </a>
+        {/* Footer Links */}
+        <div className="flex gap-6 text-sm mt-2">
+          <a href="/terms" className="text-gray-500 hover:text-black transition-colors">
+            Terms
+          </a>
+          <a href="/privacy" className="text-gray-500 hover:text-black transition-colors">
+            Privacy
+          </a>
+        </div>
       </div>
     </div>
   )
