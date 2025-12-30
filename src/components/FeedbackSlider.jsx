@@ -47,7 +47,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
         you think i stalk u on a fake account?
       </h2>
 
-      {/* Slider Container - use sliderbar_container.png directly */}
+      {/* Slider Container - sliderbar_container.png as background */}
       <div className="relative mb-4">
         <img
           src="/images/feedback/sliderbar_container.png"
@@ -55,7 +55,12 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
           className="w-full h-auto"
         />
 
-        {/* Interactive knob overlay positioned on the slider track */}
+        {/* Gradient bar overlay - positioned in the middle */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-[78%] h-[40px] bg-gradient-to-r from-[#53B4F9] to-[#F80261] rounded-full border-[3px] border-black" />
+        </div>
+
+        {/* Interactive knob overlay - on top of gradient bar */}
         <div
           ref={sliderRef}
           className="absolute inset-0 flex items-center justify-center"
