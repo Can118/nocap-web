@@ -54,32 +54,18 @@ export default function TwoStepFlow({ user }) {
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-30">
         <img
-          src="/images/feedback/background.svg"
+          src="/images/feedback/background.png"
           alt=""
           className="w-full h-full object-cover"
         />
       </div>
 
       {/* Logo Badge at Top */}
-      <div className="relative z-20 mt-8 mb-4">
+      <div className="relative z-20 mt-4 mb-6">
         <img
-          src="/images/feedback/nocap-logo.svg"
+          src="/images/feedback/nocap-logo.png"
           alt="NoCap.bio"
-          className="h-16 sm:h-20"
-        />
-      </div>
-
-      {/* Progress Indicator */}
-      <div className="relative z-10 flex gap-2 mb-8">
-        <div
-          className={`w-12 h-2 rounded-full border-2 border-black transition-all ${
-            step === 1 ? 'bg-black' : 'bg-transparent'
-          }`}
-        />
-        <div
-          className={`w-12 h-2 rounded-full border-2 border-black transition-all ${
-            step === 2 ? 'bg-black' : 'bg-transparent'
-          }`}
+          style={{ width: '120px', height: 'auto', maxWidth: '120px' }}
         />
       </div>
 
@@ -131,7 +117,7 @@ export default function TwoStepFlow({ user }) {
         {/* CTA Button */}
         <button className="transition-transform hover:translate-x-1 hover:translate-y-1 w-full max-w-md">
           <img
-            src="/images/feedback/cta-button.svg"
+            src="/images/feedback/cta-button.png"
             alt="Get your own ratings now!"
             className="w-full"
           />

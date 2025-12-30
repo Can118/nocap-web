@@ -28,10 +28,10 @@ body {
     letter-spacing: -0.5px;
   }
 
-  /* Counter text - SF Pro Bold */
+  /* Counter text - SF Pro Semibold */
   .counter-text {
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     color: #191919;
   }
 
