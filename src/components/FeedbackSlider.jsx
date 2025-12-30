@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import WebGradientSlider from './WebGradientSlider'
 
 export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
   const [rating, setRating] = useState(0) // -100 to +100
@@ -55,17 +56,22 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
           className="w-full h-auto"
         />
 
-        {/* Gradient bar overlay - positioned in the middle */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-[78%] h-[40px] bg-gradient-to-r from-[#53B4F9] to-[#F80261] rounded-full border-[3px] border-black" />
+        {/* WebGradientSlider overlay - positioned in the middle */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-[78%]">
+            <WebGradientSlider
+              percentage={sliderPercentage}
+              containerWidth={undefined} // Will use 100% of parent
+            />
+          </div>
         </div>
 
-        {/* Interactive knob overlay - on top of gradient bar */}
+        {/* Interactive draggable area - transparent overlay for dragging */}
         <div
           ref={sliderRef}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <div className="relative w-[78%]" style={{ height: '40px' }}>
+          <div className="relative w-[78%]" style={{ height: '60px' }}>
             <motion.div
               drag="x"
               dragConstraints={sliderRef}
@@ -74,11 +80,11 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
               onDrag={handleDrag}
               style={{
                 width: '22%',
-                height: '44px',
+                height: '60px',
                 left: `${sliderPercentage}%`,
                 x: '-50%',
               }}
-              className="absolute top-1/2 -translate-y-1/2 rounded-full border-[6px] border-[#FF1B90] bg-transparent cursor-grab active:cursor-grabbing shadow-lg"
+              className="absolute top-1/2 -translate-y-1/2 cursor-grab active:cursor-grabbing"
             />
           </div>
         </div>
