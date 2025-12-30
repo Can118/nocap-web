@@ -129,19 +129,14 @@ export default function TwoStepFlow({ user }) {
           ↓ {clickCount} people just clicked ↓
         </p>
 
-        {/* CTA Button - Animated */}
+        {/* CTA Button - Animated (Rocking/Tilting) */}
         <motion.button
           className="w-full max-w-md"
           animate={{
-            scale: [1, 1.05, 1],
-            boxShadow: [
-              '0 0 0px rgba(236, 72, 153, 0)',
-              '0 0 20px rgba(236, 72, 153, 0.6)',
-              '0 0 0px rgba(236, 72, 153, 0)'
-            ]
+            rotate: [0, -2, 0, 2, 0]
           }}
           transition={{
-            duration: 2,
+            duration: 0.6,
             repeat: Infinity,
             ease: "easeInOut"
           }}
