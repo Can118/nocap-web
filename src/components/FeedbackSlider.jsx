@@ -59,7 +59,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
 
         {/* WebGradientSlider overlay - positioned in the yellow card area */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ paddingTop: '8%' }}>
-          <div className="w-[78%]">
+          <div className="w-[78%]" style={{ pointerEvents: 'none' }}>
             <WebGradientSlider
               percentage={sliderPercentage}
               containerWidth={undefined} // Will use 100% of parent
@@ -79,13 +79,18 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
               dragElastic={0}
               dragMomentum={false}
               onDrag={handleDrag}
-              onDragEnd={() => {}}
+              onDragStart={() => console.log('Drag started')}
+              onDragEnd={() => console.log('Drag ended')}
               style={{
                 width: '100%',
                 height: '100%',
                 position: 'absolute',
                 top: 0,
                 left: 0,
+                touchAction: 'none',
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
+                background: 'rgba(255, 0, 0, 0.2)', // DEBUG: Visible red overlay
               }}
               className="cursor-grab active:cursor-grabbing"
             />

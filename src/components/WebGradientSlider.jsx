@@ -42,11 +42,11 @@ export default function WebGradientSlider({ percentage = 50, containerWidth }) {
   const knobY = (svgHeight - knobHeight) / 2
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
       <svg
         height={svgHeight}
         width={barWidth}
-        style={{ overflow: 'visible' }}
+        style={{ overflow: 'visible', pointerEvents: 'none' }}
       >
         <defs>
           {/* Bar gradient: Blue to Pink */}
