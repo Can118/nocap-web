@@ -11,9 +11,9 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
   const dragContainerRef = useRef(null)
 
   const handleDrag = (event, info) => {
-    if (!sliderRef.current) return
+    if (!dragContainerRef.current) return
 
-    const containerRect = sliderRef.current.getBoundingClientRect()
+    const containerRect = dragContainerRef.current.getBoundingClientRect()
     const sliderWidth = containerRect.width
     const knobWidth = sliderWidth * 0.22 // 22% of slider width
 
@@ -67,7 +67,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
           </div>
         </div>
 
-        {/* Interactive draggable area - transparent overlay for dragging */}
+        {/* Interactive draggable area - full slider track is draggable */}
         <div
           ref={sliderRef}
           className="absolute inset-0 flex items-center justify-center"
@@ -76,17 +76,18 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
           <div ref={dragContainerRef} className="relative w-[78%]" style={{ height: '60px' }}>
             <motion.div
               drag="x"
-              dragConstraints={dragContainerRef}
               dragElastic={0}
               dragMomentum={false}
               onDrag={handleDrag}
+              onDragEnd={() => {}}
               style={{
-                width: '22%',
-                height: '60px',
-                left: `${sliderPercentage}%`,
-                x: '-50%',
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+                top: 0,
+                left: 0,
               }}
-              className="absolute top-1/2 -translate-y-1/2 cursor-grab active:cursor-grabbing"
+              className="cursor-grab active:cursor-grabbing"
             />
           </div>
         </div>
