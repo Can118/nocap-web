@@ -123,8 +123,8 @@ export default function TwoStepFlow({ user }) {
 
       {/* Bottom Section */}
       <div className="relative z-10 w-full max-w-lg mt-auto mb-8 flex flex-col items-center gap-4">
-        {/* Counter */}
-        <p className="text-base sm:text-lg font-bold text-black">
+        {/* Counter - SF Pro Bold, #191919 */}
+        <p className="text-base sm:text-lg counter-text">
           ↓ 133 people just clicked ↓
         </p>
 
@@ -137,12 +137,12 @@ export default function TwoStepFlow({ user }) {
           />
         </button>
 
-        {/* Footer Links */}
+        {/* Footer Links - SF Pro Heavy, #565300 at 20% opacity */}
         <div className="flex gap-6 text-sm mt-2">
-          <a href="/terms" className="text-gray-500 hover:text-black transition-colors">
+          <a href="/terms" className="footer-link hover:opacity-40 transition-opacity">
             Terms
           </a>
-          <a href="/privacy" className="text-gray-500 hover:text-black transition-colors">
+          <a href="/privacy" className="footer-link hover:opacity-40 transition-opacity">
             Privacy
           </a>
         </div>

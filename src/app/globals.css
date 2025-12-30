@@ -17,13 +17,28 @@ body {
 }
 
 @layer utilities {
-  .text-stroke-black {
-    -webkit-text-stroke: 1px #000000;
+  /* Question text styling - matches QuestionText.js from my-new-app */
+  .question-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif;
+    font-weight: 900;
+    color: #FCF300; /* Yellow fill */
+    -webkit-text-stroke: 6px #757101; /* Brown stroke */
+    text-stroke: 6px #757101;
     paint-order: stroke fill;
+    letter-spacing: -0.5px;
   }
 
-  .text-stroke-yellow {
-    -webkit-text-stroke: 2px #FEF08A;
-    paint-order: stroke fill;
+  /* Counter text - SF Pro Bold */
+  .counter-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif;
+    font-weight: 700;
+    color: #191919;
+  }
+
+  /* Footer links - SF Pro Heavy with 20% opacity */
+  .footer-link {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif;
+    font-weight: 900;
+    color: rgba(86, 83, 0, 0.2); /* #565300 at 20% opacity */
   }
 }

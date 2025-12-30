@@ -42,8 +42,8 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
 
   return (
     <div className="w-full max-w-md mx-auto px-4">
-      {/* Question Text */}
-      <h2 className="text-center text-3xl sm:text-4xl font-black mb-6 text-black text-stroke-yellow px-4">
+      {/* Question Text - matches QuestionText.js styling */}
+      <h2 className="text-center text-3xl sm:text-4xl question-text mb-6 px-4">
         you think i stalk u on a fake account?
       </h2>
 
