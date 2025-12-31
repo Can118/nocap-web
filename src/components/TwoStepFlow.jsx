@@ -131,7 +131,7 @@ export default function TwoStepFlow({ user }) {
 
         {/* CTA Button - Animated (Rocking/Tilting with pauses) */}
         <motion.button
-          className="w-full max-w-md"
+          className="w-full max-w-md bg-transparent border-0 p-0 outline-none"
           animate={{
             rotate: [0, -2, 2, -2, 0]
           }}
