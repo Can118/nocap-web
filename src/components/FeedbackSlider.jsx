@@ -153,7 +153,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
             <img
               src="/images/feedback/tapsend.png"
               alt="tap send!"
-              style={{ maxWidth: '120px', height: 'auto' }}
+              style={{ maxWidth: '90px', height: 'auto' }}
             />
           </div>
         )}
@@ -164,7 +164,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
         <img
           src="/images/feedback/anonymous-badge.png"
           alt="100% anonymous"
-          style={{ width: '140px', height: 'auto', maxWidth: '140px' }}
+          style={{ width: '180px', height: 'auto', maxWidth: '180px' }}
         />
       </div>
 
@@ -172,7 +172,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
       <button
         onClick={handleSubmit}
         disabled={!hasInteracted || isLoading}
-        className="w-full max-w-[200px] mx-auto block transition-transform hover:scale-105 bg-transparent border-0 p-0 outline-none"
+        className="w-full max-w-[200px] mx-auto block transition-transform hover:scale-105 bg-transparent border-0 p-0 outline-none mt-2"
       >
         <img
           src="/images/feedback/send-button.png"

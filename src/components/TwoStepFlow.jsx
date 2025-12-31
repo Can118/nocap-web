@@ -76,7 +76,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Logo Badge at Top */}
-      <div className="relative z-20 mt-4 mb-6">
+      <div className="relative z-20 mt-8 mb-6">
         <img
           src="/images/feedback/nocap-logo.png"
           alt="NoCap.bio"
@@ -123,7 +123,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Bottom Section */}
-      <div className="relative z-10 w-full max-w-lg mt-auto mb-4 flex flex-col items-center gap-3">
+      <div className="relative z-10 w-full max-w-lg mt-auto mb-2 flex flex-col items-center gap-3">
         {/* Counter - SF Pro Bold, #191919 - Animated */}
         <p className="text-base sm:text-lg counter-text">
           ↓ {clickCount} people just clicked ↓
