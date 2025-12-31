@@ -172,7 +172,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
       <button
         onClick={handleSubmit}
         disabled={!hasInteracted || isLoading}
-        className="w-full max-w-[200px] mx-auto block transition-transform hover:scale-105 bg-transparent border-0 p-0 outline-none mt-2"
+        className="w-full max-w-[200px] mx-auto block transition-transform hover:scale-105 bg-transparent border-0 p-0 outline-none mt-8"
       >
         <img
           src="/images/feedback/send-button.png"
