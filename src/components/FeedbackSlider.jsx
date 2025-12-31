@@ -138,6 +138,25 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
             </motion.div>
           </div>
         </div>
+
+        {/* "tap send!" indicator - shows after interaction */}
+        {hasInteracted && (
+          <div
+            className="absolute"
+            style={{
+              top: '72%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              zIndex: 10,
+            }}
+          >
+            <img
+              src="/images/feedback/tapsend.png"
+              alt="tap send!"
+              style={{ maxWidth: '120px', height: 'auto' }}
+            />
+          </div>
+        )}
       </div>
 
       {/* Anonymous Badge - use PNG version */}
