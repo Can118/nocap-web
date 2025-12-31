@@ -71,18 +71,20 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
 
         {/* Slider positioned absolutely over the yellow card */}
         <div
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute"
           style={{
-            paddingTop: '52%',
+            top: '60%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '78%',
             zIndex: 10,
           }}
         >
           <div
             ref={containerRef}
-            className="relative w-[78%]"
+            className="relative w-full"
             style={{
-              height: '12%',
-              minHeight: '40px',
+              height: '45px',
               backgroundColor: 'rgba(255, 0, 0, 0.3)', // DEBUG: Red background to see positioning
             }}
           >
