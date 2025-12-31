@@ -123,7 +123,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Bottom Section */}
-      <div className="relative z-10 w-full max-w-lg mt-auto mb-6 flex flex-col items-center gap-3">
+      <div className="relative z-10 w-full max-w-lg mt-auto mb-4 flex flex-col items-center gap-3">
         {/* Counter - SF Pro Bold, #191919 - Animated */}
         <p className="text-base sm:text-lg counter-text">
           ↓ {clickCount} people just clicked ↓
@@ -131,7 +131,7 @@ export default function TwoStepFlow({ user }) {
 
         {/* CTA Button - Animated (Rocking/Tilting with pauses) */}
         <motion.button
-          className="w-full max-w-[280px] bg-transparent border-0 p-0 outline-none"
+          className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
           animate={{
             rotate: [0, -2, 2, -2, 0]
           }}
