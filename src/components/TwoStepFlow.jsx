@@ -65,7 +65,7 @@ export default function TwoStepFlow({ user }) {
   }
 
   return (
-    <div className="relative min-h-screen bg-nocap-cream flex flex-col items-center p-4 overflow-hidden">
+    <div className="relative min-h-screen bg-nocap-cream flex flex-col items-center px-4 pt-20 pb-4 overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-30">
         <img
