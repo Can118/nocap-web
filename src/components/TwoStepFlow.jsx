@@ -76,7 +76,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Spacer to push logo down */}
-      <div style={{ height: '80px' }} />
+      <div style={{ height: '40px' }} />
 
       {/* Logo Badge at Top */}
       <div className="relative z-20 mt-0 mb-6">
