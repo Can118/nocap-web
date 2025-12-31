@@ -85,7 +85,6 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
             className="relative w-full"
             style={{
               height: '45px',
-              backgroundColor: 'rgba(255, 0, 0, 0.3)', // DEBUG: Red background to see positioning
             }}
           >
             {/* Gradient Bar Track */}
@@ -95,8 +94,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
                 top: '50%',
                 left: 0,
                 right: 0,
-                height: '50%',
-                minHeight: '18px',
+                height: '80%',
                 transform: 'translateY(-50%)',
                 borderRadius: '100px',
                 background: 'linear-gradient(to right, #53B4F9 0%, #F80261 100%)',
