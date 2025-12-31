@@ -56,13 +56,15 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
 
   return (
     <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-      {/* Question Text */}
-      <h2 className="text-center text-2xl sm:text-3xl question-text mb-6 px-2">
-        you think i stalk u on a fake account?
-      </h2>
+      {/* Upper section - moves independently from Send button */}
+      <div className="-mt-8">
+        {/* Question Text */}
+        <h2 className="text-center text-2xl sm:text-3xl question-text mb-6 px-2">
+          you think i stalk u on a fake account?
+        </h2>
 
-      {/* Slider Container - sliderbar_container.png as background */}
-      <div className="relative mb-4">
+        {/* Slider Container - sliderbar_container.png as background */}
+        <div className="relative mb-4">
         <img
           src="/images/feedback/sliderbar_container.png"
           alt="Slider"
@@ -159,13 +161,14 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
         )}
       </div>
 
-      {/* Anonymous Badge - use PNG version */}
-      <div className="flex justify-center mb-4">
-        <img
-          src="/images/feedback/anonymous-badge.png"
-          alt="100% anonymous"
-          style={{ width: '180px', height: 'auto', maxWidth: '180px' }}
-        />
+        {/* Anonymous Badge - use PNG version */}
+        <div className="flex justify-center mb-4">
+          <img
+            src="/images/feedback/anonymous-badge.png"
+            alt="100% anonymous"
+            style={{ width: '180px', height: 'auto', maxWidth: '180px' }}
+          />
+        </div>
       </div>
 
       {/* Send Button - use PNG version exactly as is */}
