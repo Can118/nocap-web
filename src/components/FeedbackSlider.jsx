@@ -1,47 +1,58 @@
 'use client'
 
-import { useState, useRef } from 'react'
-import { motion } from 'framer-motion'
-import WebGradientSlider from './WebGradientSlider'
+import { useState, useRef, useEffect } from 'react'
+import { motion, useMotionValue, useTransform } from 'framer-motion'
 
 export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
-  const [rating, setRating] = useState(0) // -100 to +100
   const [hasInteracted, setHasInteracted] = useState(false)
-  const [isDragging, setIsDragging] = useState(false)
-  const sliderRef = useRef(null)
-  const dragContainerRef = useRef(null)
+  const [rating, setRating] = useState(0) // -100 to +100
+  const containerRef = useRef(null)
+  const [containerWidth, setContainerWidth] = useState(300)
 
-  const handleDrag = (event, info) => {
-    if (!dragContainerRef.current) return
+  // Track knob position
+  const x = useMotionValue(0)
 
-    const containerRect = dragContainerRef.current.getBoundingClientRect()
-    const sliderWidth = containerRect.width
+  // Update container width on mount and resize
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        const width = containerRef.current.offsetWidth
+        setContainerWidth(width)
+        // Set initial position to center
+        x.set(width / 2)
+      }
+    }
 
-    // info.point.x is the absolute screen position
-    const relativeX = info.point.x - containerRect.left
+    updateWidth()
+    window.addEventListener('resize', updateWidth)
+    return () => window.removeEventListener('resize', updateWidth)
+  }, [x])
 
-    // Clamp between 0 and container width
-    const clampedX = Math.max(0, Math.min(relativeX, sliderWidth))
+  // Calculate max drag distance (container width minus knob width)
+  const knobWidth = containerWidth * 0.25 // 25% of container
+  const maxDrag = containerWidth - knobWidth
 
-    // Convert to percentage (0-100)
-    const percentage = (clampedX / sliderWidth) * 100
+  const handleDragEnd = () => {
+    if (!containerRef.current) return
 
-    // Convert percentage to rating (-100 to +100)
-    const normalizedRating = (percentage / 100) * 200 - 100
-    setRating(Math.round(normalizedRating))
+    const currentX = x.get()
+    // Convert position to percentage (0 to 100)
+    const percentage = Math.max(0, Math.min(100, (currentX / maxDrag) * 100))
+    // Convert to rating (-100 to +100)
+    const newRating = Math.round((percentage / 100) * 200 - 100)
+    setRating(newRating)
 
     if (!hasInteracted) {
       setHasInteracted(true)
     }
+
+    console.log('Rating:', newRating, 'Position:', currentX, 'Percentage:', percentage)
   }
 
   const handleSubmit = () => {
     if (!hasInteracted) return
     onSubmit(rating)
   }
-
-  // Convert rating (-100 to +100) to percentage (0 to 100) for UI
-  const sliderPercentage = ((rating + 100) / 200) * 100
 
   return (
     <div className="w-full max-w-md mx-auto px-4 sm:px-6">
@@ -58,77 +69,64 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
           className="w-full h-auto"
         />
 
-        {/* WebGradientSlider overlay - positioned in the yellow card area */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ paddingTop: '8%' }}>
-          <div className="w-[78%]" style={{ pointerEvents: 'none' }}>
-            <WebGradientSlider
-              percentage={sliderPercentage}
-              containerWidth={undefined} // Will use 100% of parent
-            />
-          </div>
-        </div>
-
-        {/* Interactive draggable overlay - covers the slider track area */}
+        {/* Slider positioned absolutely over the yellow card */}
         <div
-          ref={sliderRef}
           className="absolute inset-0 flex items-center justify-center"
           style={{ paddingTop: '8%' }}
         >
           <div
-            ref={dragContainerRef}
+            ref={containerRef}
             className="relative w-[78%]"
-            style={{ height: '60px' }}
-            onMouseDown={(e) => {
-              // Handle click anywhere on track to jump to position
-              if (!dragContainerRef.current) return
-              const rect = dragContainerRef.current.getBoundingClientRect()
-              const relativeX = e.clientX - rect.left
-              const clampedX = Math.max(0, Math.min(relativeX, rect.width))
-              const percentage = (clampedX / rect.width) * 100
-              const normalizedRating = (percentage / 100) * 200 - 100
-              setRating(Math.round(normalizedRating))
-              setHasInteracted(true)
-            }}
-            onTouchStart={(e) => {
-              // Handle touch anywhere on track
-              if (!dragContainerRef.current || e.touches.length === 0) return
-              const rect = dragContainerRef.current.getBoundingClientRect()
-              const relativeX = e.touches[0].clientX - rect.left
-              const clampedX = Math.max(0, Math.min(relativeX, rect.width))
-              const percentage = (clampedX / rect.width) * 100
-              const normalizedRating = (percentage / 100) * 200 - 100
-              setRating(Math.round(normalizedRating))
-              setHasInteracted(true)
-            }}
+            style={{ height: '50px' }}
           >
-            {/* Transparent draggable area covering the entire track */}
+            {/* Gradient Bar Track */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: 0,
+                right: 0,
+                height: '40%',
+                transform: 'translateY(-50%)',
+                borderRadius: '100px',
+                background: 'linear-gradient(to right, #53B4F9 0%, #F80261 100%)',
+                boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.15)',
+              }}
+            />
+
+            {/* Draggable Knob */}
             <motion.div
               drag="x"
+              dragConstraints={{ left: 0, right: maxDrag }}
               dragElastic={0}
               dragMomentum={false}
-              dragConstraints={{ left: 0, right: 0 }}
-              onDrag={handleDrag}
-              onDragStart={() => {
-                console.log('Drag started')
-                setIsDragging(true)
-                setHasInteracted(true)
-              }}
-              onDragEnd={() => {
-                console.log('Drag ended')
-                setIsDragging(false)
-              }}
               style={{
-                width: '100%',
-                height: '100%',
+                x,
                 position: 'absolute',
-                top: 0,
-                left: 0,
+                top: '50%',
+                width: `${(knobWidth / containerWidth) * 100}%`,
+                height: '70%',
+                y: '-50%',
                 touchAction: 'none',
-                userSelect: 'none',
-                WebkitUserSelect: 'none',
               }}
-              className="cursor-pointer active:cursor-grabbing"
-            />
+              onDragEnd={handleDragEnd}
+              onDrag={() => {
+                if (!hasInteracted) setHasInteracted(true)
+              }}
+              className="cursor-grab active:cursor-grabbing"
+            >
+              {/* Knob Visual - Pink Oval */}
+              <div
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '100px',
+                  border: '5px solid #FF1B90',
+                  backgroundColor: 'rgba(255, 27, 144, 0.1)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+                }}
+              />
+            </motion.div>
           </div>
         </div>
       </div>
