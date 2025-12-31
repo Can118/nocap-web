@@ -76,7 +76,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Logo Badge at Top */}
-      <div className="relative z-20 mt-20 mb-6">
+      <div className="relative z-20 mt-28 mb-6">
         <img
           src="/images/feedback/nocap-logo.png"
           alt="NoCap.bio"
