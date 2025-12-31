@@ -72,12 +72,15 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
         {/* Slider positioned absolutely over the yellow card */}
         <div
           className="absolute inset-0 flex items-center justify-center"
-          style={{ paddingTop: '8%' }}
+          style={{ paddingTop: '52%' }}
         >
           <div
             ref={containerRef}
             className="relative w-[78%]"
-            style={{ height: '50px' }}
+            style={{
+              height: '12%',
+              minHeight: '40px',
+            }}
           >
             {/* Gradient Bar Track */}
             <div
@@ -86,7 +89,8 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
                 top: '50%',
                 left: 0,
                 right: 0,
-                height: '40%',
+                height: '50%',
+                minHeight: '18px',
                 transform: 'translateY(-50%)',
                 borderRadius: '100px',
                 background: 'linear-gradient(to right, #53B4F9 0%, #F80261 100%)',
@@ -105,7 +109,8 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
                 position: 'absolute',
                 top: '50%',
                 width: `${(knobWidth / containerWidth) * 100}%`,
-                height: '70%',
+                height: '100%',
+                minHeight: '35px',
                 y: '-50%',
                 touchAction: 'none',
               }}
