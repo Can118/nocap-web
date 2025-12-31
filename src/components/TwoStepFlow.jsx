@@ -65,7 +65,7 @@ export default function TwoStepFlow({ user }) {
   }
 
   return (
-    <div className="relative min-h-screen bg-nocap-cream flex flex-col items-center px-4 pt-20 pb-4 overflow-hidden">
+    <div className="relative min-h-screen bg-nocap-cream flex flex-col items-center px-4 pt-4 pb-4 overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-30">
         <img
@@ -75,8 +75,11 @@ export default function TwoStepFlow({ user }) {
         />
       </div>
 
+      {/* Spacer to push logo down */}
+      <div style={{ height: '120px' }} />
+
       {/* Logo Badge at Top */}
-      <div className="relative z-20 mt-28 mb-6">
+      <div className="relative z-20 mt-0 mb-6">
         <img
           src="/images/feedback/nocap-logo.png"
           alt="NoCap.bio"
