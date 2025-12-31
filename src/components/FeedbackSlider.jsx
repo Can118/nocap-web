@@ -72,7 +72,10 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
         {/* Slider positioned absolutely over the yellow card */}
         <div
           className="absolute inset-0 flex items-center justify-center"
-          style={{ paddingTop: '52%' }}
+          style={{
+            paddingTop: '52%',
+            zIndex: 10,
+          }}
         >
           <div
             ref={containerRef}
@@ -80,6 +83,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
             style={{
               height: '12%',
               minHeight: '40px',
+              backgroundColor: 'rgba(255, 0, 0, 0.3)', // DEBUG: Red background to see positioning
             }}
           >
             {/* Gradient Bar Track */}
