@@ -126,7 +126,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Bottom Section */}
-      <div className="relative z-10 w-full max-w-lg mt-0 mb-8 flex flex-col items-center gap-3">
+      <div className="relative z-10 w-full max-w-lg -mt-20 mb-8 flex flex-col items-center gap-3">
         {/* Counter - SF Pro Bold, #191919 - Animated */}
         <p className="text-base sm:text-lg counter-text">
           ↓ {clickCount} people just clicked ↓
