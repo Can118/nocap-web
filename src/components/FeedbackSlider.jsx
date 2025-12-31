@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import WebGradientSlider from './WebGradientSlider'
 
 export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
   const [rating, setRating] = useState(0) // -100 to +100
@@ -15,9 +16,8 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
 
     const containerRect = dragContainerRef.current.getBoundingClientRect()
     const sliderWidth = containerRect.width
-    const knobWidth = sliderWidth * 0.22 // 22% of slider width
 
-    // info.point.x is the absolute position, we need relative to container
+    // info.point.x is the absolute screen position
     const relativeX = info.point.x - containerRect.left
 
     // Clamp between 0 and container width
@@ -40,14 +40,8 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
     onSubmit(rating)
   }
 
-  // Convert rating (-100 to +100) to x position in pixels
-  // Start at 0 (left edge) when rating is -100, end at container width when rating is +100
-  const getKnobPosition = () => {
-    if (!dragContainerRef.current) return 0
-    const sliderWidth = dragContainerRef.current.offsetWidth || 300
-    const percentage = ((rating + 100) / 200) // 0 to 1
-    return sliderWidth * percentage
-  }
+  // Convert rating (-100 to +100) to percentage (0 to 100) for UI
+  const sliderPercentage = ((rating + 100) / 200) * 100
 
   return (
     <div className="w-full max-w-md mx-auto px-4 sm:px-6">
@@ -64,31 +58,55 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
           className="w-full h-auto"
         />
 
-        {/* Slider Track and Draggable Knob */}
+        {/* WebGradientSlider overlay - positioned in the yellow card area */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ paddingTop: '8%' }}>
+          <div className="w-[78%]" style={{ pointerEvents: 'none' }}>
+            <WebGradientSlider
+              percentage={sliderPercentage}
+              containerWidth={undefined} // Will use 100% of parent
+            />
+          </div>
+        </div>
+
+        {/* Interactive draggable overlay - covers the slider track area */}
         <div
           ref={sliderRef}
           className="absolute inset-0 flex items-center justify-center"
           style={{ paddingTop: '8%' }}
         >
-          <div ref={dragContainerRef} className="relative w-[78%]" style={{ height: '60px' }}>
-            {/* Gradient Background Bar */}
-            <div
-              className="absolute top-1/2 left-0 right-0"
-              style={{
-                height: '36px',
-                transform: 'translateY(-50%)',
-                borderRadius: '18px',
-                background: 'linear-gradient(to right, #53B4F9 0%, #F80261 100%)',
-                boxShadow: 'inset 0 2px 4px rgba(25, 25, 25, 0.1)',
-              }}
-            />
-
-            {/* Draggable Knob */}
+          <div
+            ref={dragContainerRef}
+            className="relative w-[78%]"
+            style={{ height: '60px' }}
+            onMouseDown={(e) => {
+              // Handle click anywhere on track to jump to position
+              if (!dragContainerRef.current) return
+              const rect = dragContainerRef.current.getBoundingClientRect()
+              const relativeX = e.clientX - rect.left
+              const clampedX = Math.max(0, Math.min(relativeX, rect.width))
+              const percentage = (clampedX / rect.width) * 100
+              const normalizedRating = (percentage / 100) * 200 - 100
+              setRating(Math.round(normalizedRating))
+              setHasInteracted(true)
+            }}
+            onTouchStart={(e) => {
+              // Handle touch anywhere on track
+              if (!dragContainerRef.current || e.touches.length === 0) return
+              const rect = dragContainerRef.current.getBoundingClientRect()
+              const relativeX = e.touches[0].clientX - rect.left
+              const clampedX = Math.max(0, Math.min(relativeX, rect.width))
+              const percentage = (clampedX / rect.width) * 100
+              const normalizedRating = (percentage / 100) * 200 - 100
+              setRating(Math.round(normalizedRating))
+              setHasInteracted(true)
+            }}
+          >
+            {/* Transparent draggable area covering the entire track */}
             <motion.div
               drag="x"
               dragElastic={0}
               dragMomentum={false}
-              dragConstraints={dragContainerRef}
+              dragConstraints={{ left: 0, right: 0 }}
               onDrag={handleDrag}
               onDragStart={() => {
                 console.log('Drag started')
@@ -99,33 +117,18 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
                 console.log('Drag ended')
                 setIsDragging(false)
               }}
-              animate={!isDragging ? { x: getKnobPosition() } : undefined}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               style={{
-                width: '22%',
-                height: '42px',
+                width: '100%',
+                height: '100%',
                 position: 'absolute',
-                top: '50%',
+                top: 0,
                 left: 0,
-                y: '-50%',
                 touchAction: 'none',
                 userSelect: 'none',
                 WebkitUserSelect: 'none',
               }}
-              className="cursor-grab active:cursor-grabbing"
-            >
-              {/* Knob Visual */}
-              <div
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: '21px',
-                  border: '6px solid #FF1B90',
-                  background: 'transparent',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.25)',
-                }}
-              />
-            </motion.div>
+              className="cursor-pointer active:cursor-grabbing"
+            />
           </div>
         </div>
       </div>
