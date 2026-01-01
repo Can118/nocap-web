@@ -68,7 +68,7 @@ export default function TwoStepFlow({ user }) {
     <div
       className="relative min-h-screen flex flex-col items-center px-4 pt-4 pb-4 overflow-hidden"
       style={{
-        backgroundColor: '#000000',
+        backgroundColor: '#FFFECE',
         backgroundImage: 'url(/images/feedback/background.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
