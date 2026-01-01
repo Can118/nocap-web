@@ -126,14 +126,15 @@ export default function TwoStepFlow({ user }) {
         </AnimatePresence>
       </div>
 
-      {/* Bottom Section */}
-      <div className="relative z-10 w-full max-w-lg flex flex-col items-center gap-3" style={{ marginTop: '120px' }}>
-        {/* Counter - SF Pro Bold, #191919 - Animated */}
+      {/* Counter Text - Independent positioning */}
+      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '100px' }}>
         <p className="text-base sm:text-lg counter-text">
           ↓ {clickCount} people just clicked ↓
         </p>
+      </div>
 
-        {/* CTA Button - Animated (Rocking/Tilting with pauses) */}
+      {/* CTA Button - Independent positioning */}
+      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '12px' }}>
         <motion.button
           className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
           animate={{
@@ -152,9 +153,11 @@ export default function TwoStepFlow({ user }) {
             className="w-full"
           />
         </motion.button>
+      </div>
 
-        {/* Footer Links - SF Pro Heavy, #565300 at 20% opacity */}
-        <div className="flex gap-6 text-sm mt-2">
+      {/* Footer Links - Independent positioning */}
+      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '24px' }}>
+        <div className="flex gap-6 text-sm">
           <a href="/terms" className="footer-link hover:opacity-40 transition-opacity">
             Terms
           </a>
