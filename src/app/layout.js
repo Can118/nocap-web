@@ -1,8 +1,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'NoCap - Send Anonymous Messages',
-  description: 'Send anonymous messages and feedback to your friends',
+  title: 'NoCap - Share Anonymous Opinions',
+  description: 'Share anonymous opinions with your friends',
   themeColor: '#FFFECE',
   viewport: {
     width: 'device-width',

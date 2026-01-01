@@ -24,11 +24,11 @@ export async function generateMetadata({ params }) {
   const displayName = user?.username || user?.nocap_id || 'NoCap User'
 
   return {
-    title: `Send anonymous message to ${displayName} | NoCap`,
-    description: `Send me anonymous messages and feedback on NoCap!`,
+    title: `Share anonymous opinions with ${displayName} | NoCap`,
+    description: `Share your anonymous opinions with me on NoCap!`,
     openGraph: {
-      title: `Send me anonymous messages!`,
-      description: 'Click to send me something anonymously',
+      title: `Share your anonymous opinions!`,
+      description: 'Click to share your thoughts anonymously',
       type: 'website',
     },
   }
