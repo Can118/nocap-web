@@ -18,11 +18,18 @@ export async function submitFeedback(receiverId, ratingValue) {
   }
 
   try {
-    // Collect metadata for rate limiting
-    const [fingerprint, locationInfo] = await Promise.all([
-      getBrowserFingerprint(),
-      getLocationFromIP()
-    ])
+    // Collect metadata for rate limiting (non-blocking)
+    let fingerprint = 'unknown'
+    let locationInfo = { ip: 'unknown' }
+
+    try {
+      [fingerprint, locationInfo] = await Promise.all([
+        getBrowserFingerprint(),
+        getLocationFromIP()
+      ])
+    } catch (metadataError) {
+      console.warn('Failed to collect metadata, continuing with defaults:', metadataError)
+    }
 
     // Insert feedback (completely anonymous - no sender tracking)
     const { data, error } = await supabase
@@ -37,8 +44,9 @@ export async function submitFeedback(receiverId, ratingValue) {
       .single()
 
     if (error) {
-      console.error('Feedback submission error:', error)
-      throw error
+      console.error('Supabase feedback error:', error)
+      // Provide more detailed error message
+      throw new Error(`Database error: ${error.message || 'Failed to save feedback'}`)
     }
 
     return data

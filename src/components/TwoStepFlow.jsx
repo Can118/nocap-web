@@ -40,7 +40,9 @@ export default function TwoStepFlow({ user }) {
       setStep(2)
     } catch (error) {
       console.error('Failed to submit feedback:', error)
-      alert('Failed to submit feedback. Please try again.')
+      // Show detailed error message for debugging
+      const errorMessage = error.message || 'Failed to submit feedback. Please try again.'
+      alert(errorMessage)
     } finally {
       setIsLoading(false)
     }

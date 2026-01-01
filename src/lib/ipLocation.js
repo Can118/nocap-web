@@ -4,7 +4,8 @@
  */
 export async function getLocationFromIP() {
   try {
-    const response = await fetch('http://ip-api.com/json/')
+    // Use HTTPS to avoid mixed content errors on production
+    const response = await fetch('https://ipapi.co/json/')
 
     if (!response.ok) {
       throw new Error('Failed to fetch location')
@@ -12,12 +13,10 @@ export async function getLocationFromIP() {
 
     const data = await response.json()
 
-    if (data.status === 'success') {
-      return {
-        city: data.city || 'Unknown',
-        formatted: data.city ? `near ${data.city}` : 'Unknown location',
-        ip: data.query || 'Unknown'
-      }
+    return {
+      city: data.city || 'Unknown',
+      formatted: data.city ? `near ${data.city}` : 'Unknown location',
+      ip: data.ip || 'Unknown'
     }
   } catch (error) {
     console.error('Location fetch error:', error)
