@@ -127,7 +127,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Bottom Section */}
-      <div className="relative z-10 w-full max-w-lg flex flex-col items-center gap-3" style={{ marginTop: '-350px' }}>
+      <div className="relative z-10 w-full max-w-lg flex flex-col items-center gap-3" style={{ marginTop: '-60px' }}>
         {/* Counter - SF Pro Bold, #191919 - Animated */}
         <p className="text-base sm:text-lg counter-text">
           ↓ {clickCount} people just clicked ↓
