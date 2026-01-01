@@ -89,7 +89,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Step Content with Animation */}
-      <div className="relative z-10 w-full max-w-lg flex flex-col mt-8">
+      <div className="relative z-10 w-full max-w-lg flex flex-col" style={{ marginTop: '80px' }}>
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div
