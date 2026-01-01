@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import FeedbackSlider from './FeedbackSlider'
-import MessageForm from './MessageForm'
+import MessageScreen from './MessageScreen'
 import { submitFeedback } from '@/lib/feedbackService'
 import { sendAnonymousMessage } from '@/lib/messageService'
 
@@ -12,6 +12,7 @@ export default function TwoStepFlow({ user }) {
   const [step, setStep] = useState(1) // 1 or 2
   const [isLoading, setIsLoading] = useState(false)
   const [clickCount, setClickCount] = useState(133) // Animated counter
+  const [questionText, setQuestionText] = useState('') // Store the question
   const router = useRouter()
 
   const displayName = user.username || `user ${user.nocap_id}`
@@ -115,10 +116,11 @@ export default function TwoStepFlow({ user }) {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <MessageForm
+              <MessageScreen
                 onSubmit={handleMessageSubmit}
                 onSkip={handleSkip}
                 receiverName={displayName}
+                questionText="you think i stalk u on a fake account?"
                 isLoading={isLoading}
               />
             </motion.div>
