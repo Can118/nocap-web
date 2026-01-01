@@ -11,20 +11,6 @@ export default function MessageScreen({
   isLoading
 }) {
   const [message, setMessage] = useState('')
-  const [messageCount, setMessageCount] = useState(77) // Animated counter
-
-  // Animate counter - changes every second
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMessageCount(prev => {
-        const changes = [-2, -1, 1, 2, 3]
-        const randomChange = changes[Math.floor(Math.random() * changes.length)]
-        return prev + randomChange
-      })
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [])
 
   const handleSubmit = async () => {
     if (!message.trim()) {
@@ -35,79 +21,93 @@ export default function MessageScreen({
     await onSubmit(message.trim())
   }
 
-  const handleSkip = () => {
-    onSkip()
-  }
-
   return (
     <div className="w-full max-w-md mx-auto px-4">
-      {/* Confirmation Message */}
-      <div className="text-center mb-8">
-        <h1 className="text-xl sm:text-2xl font-bold text-black leading-tight">
-          Your answer is sent,<br />
-          but they'll <span className="relative inline-block">
-            never
-            <span className="absolute bottom-0 left-0 w-full h-1 bg-yellow-400"></span>
-          </span> know it was you.
-        </h1>
+      {/* Confirmation Message - Using PNG */}
+      <div className="flex justify-center mb-8">
+        <img
+          src="/images/message/text_message_screen.png"
+          alt="Your answer is sent, but they'll never know it was you"
+          className="w-full max-w-[380px]"
+          style={{ height: 'auto' }}
+        />
       </div>
 
-      {/* Question Card */}
-      <div
-        className="relative mb-6 rounded-3xl overflow-hidden"
-        style={{
-          backgroundColor: '#FFFECE',
-          border: '4px solid #000',
-          boxShadow: '6px 6px 0px #000'
-        }}
-      >
-        {/* Question Text - shown at top of card */}
-        <div className="px-6 pt-6 pb-4">
-          <h2 className="text-center text-xl sm:text-2xl question-text">
+      {/* Message Container - Using PNG Background */}
+      <div className="relative mb-6">
+        <img
+          src="/images/message/message_container.png"
+          alt="Message container"
+          className="w-full"
+        />
+
+        {/* Question Text Overlay */}
+        <div
+          className="absolute"
+          style={{
+            top: '8%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '85%',
+            textAlign: 'center'
+          }}
+        >
+          <h2 className="text-xl sm:text-2xl question-text">
             {questionText}
           </h2>
         </div>
 
-        {/* Message Input Area */}
-        <div className="px-6 pb-6">
+        {/* Message Input Overlay */}
+        <div
+          className="absolute"
+          style={{
+            top: '35%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '85%'
+          }}
+        >
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="you can also send an anonymous reply to your friend 😈"
-            className="w-full h-32 p-4 bg-white/50 border-0 rounded-2xl resize-none focus:outline-none focus:ring-2 focus:ring-purple-400 text-base placeholder-gray-400"
+            className="w-full h-32 p-4 bg-transparent border-0 resize-none focus:outline-none text-base placeholder-gray-400"
             maxLength={500}
             disabled={isLoading}
             style={{
-              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro", system-ui, sans-serif'
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro", system-ui, sans-serif',
+              color: '#666'
             }}
           />
         </div>
       </div>
 
-      {/* Send Button */}
+      {/* Send Button - Using PNG */}
       <button
         onClick={handleSubmit}
         disabled={isLoading}
         className="w-full max-w-[280px] mx-auto block bg-transparent border-0 p-0 outline-none transition-transform hover:scale-105"
       >
         <img
-          src="/images/feedback/send-button.png"
+          src="/images/message/sendbutton_messagescreen.png"
           alt={isLoading ? 'Sending...' : 'Send'}
           className="w-full"
         />
       </button>
 
       {/* Spacer */}
-      <div style={{ height: '80px' }} />
+      <div style={{ height: '60px' }} />
 
-      {/* Counter Text */}
-      <div className="text-center mb-3">
-        <p className="text-base sm:text-lg counter-text">
-          ↓ {messageCount} people just got anonymous messages ↓
-        </p>
+      {/* Counter - Using PNG */}
+      <div className="flex justify-center mb-4">
+        <img
+          src="/images/message/↓ 77 people just got anonymous messages ↓.png"
+          alt="77 people just got anonymous messages"
+          className="w-full max-w-[420px]"
+        />
       </div>
 
-      {/* CTA Button */}
+      {/* CTA Button - Using PNG with Animation */}
       <div className="flex justify-center mb-6">
         <motion.button
           className="w-full max-w-[380px] bg-transparent border-0 p-0 outline-none"
@@ -121,15 +121,11 @@ export default function MessageScreen({
             ease: "easeInOut"
           }}
         >
-          <div
-            className="relative rounded-full py-5 px-8 text-center text-xl sm:text-2xl font-bold text-white"
-            style={{
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
-            }}
-          >
-            Get your own replies
-          </div>
+          <img
+            src="/images/message/getyourownreplies_button.png"
+            alt="Get your own replies"
+            className="w-full"
+          />
         </motion.button>
       </div>
 
