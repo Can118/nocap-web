@@ -101,7 +101,7 @@ export default function MessageScreen({
       {/* Counter - Using PNG */}
       <div className="flex justify-center mb-4">
         <img
-          src="/images/message/↓ 77 people just got anonymous messages ↓.png"
+          src="/images/message/people_counter.png"
           alt="77 people just got anonymous messages"
           className="w-full max-w-[420px]"
         />
