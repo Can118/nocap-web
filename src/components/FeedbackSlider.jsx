@@ -146,7 +146,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
           <div
             className="absolute"
             style={{
-              top: '72%',
+              top: '76%',
               left: '50%',
               transform: 'translateX(-50%)',
               zIndex: 10,
