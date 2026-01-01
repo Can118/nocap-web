@@ -66,7 +66,7 @@ export default function TwoStepFlow({ user }) {
 
   return (
     <div
-      className="relative min-h-screen flex flex-col items-center px-4 pt-4 pb-4 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-start items-center px-4 pt-4 pb-4 overflow-hidden"
       style={{
         backgroundColor: '#FFFECE',
         backgroundImage: 'url(/images/feedback/background.png)',
@@ -89,7 +89,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Step Content with Animation */}
-      <div className="relative z-10 w-full max-w-lg flex-1 flex flex-col justify-center">
+      <div className="relative z-10 w-full max-w-lg flex flex-col mt-8">
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div
@@ -127,7 +127,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Bottom Section */}
-      <div className="relative z-10 w-full max-w-lg -mt-20 mb-8 flex flex-col items-center gap-3">
+      <div className="relative z-10 w-full max-w-lg flex flex-col items-center gap-3" style={{ marginTop: '-350px' }}>
         {/* Counter - SF Pro Bold, #191919 - Animated */}
         <p className="text-base sm:text-lg counter-text">
           ↓ {clickCount} people just clicked ↓
