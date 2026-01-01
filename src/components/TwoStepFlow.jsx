@@ -65,15 +65,16 @@ export default function TwoStepFlow({ user }) {
   }
 
   return (
-    <div className="relative min-h-screen bg-nocap-cream flex flex-col items-center px-4 pt-4 pb-4 overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <img
-          src="/images/feedback/background.png"
-          alt=""
-          className="w-full h-full object-cover"
-        />
-      </div>
+    <div
+      className="relative min-h-screen flex flex-col items-center px-4 pt-4 pb-4 overflow-hidden"
+      style={{
+        backgroundColor: '#000000',
+        backgroundImage: 'url(/images/feedback/background.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
 
       {/* Spacer to push logo down */}
       <div style={{ height: '40px' }} />
