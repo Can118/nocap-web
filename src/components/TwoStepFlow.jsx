@@ -89,7 +89,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Step Content with Animation */}
-      <div className="relative z-10 w-full max-w-lg flex flex-col" style={{ marginTop: '80px' }}>
+      <div className="relative z-10 w-full max-w-lg flex flex-col" style={{ marginTop: '50px' }}>
         <AnimatePresence mode="wait">
           {step === 1 && (
             <motion.div
@@ -127,7 +127,7 @@ export default function TwoStepFlow({ user }) {
       </div>
 
       {/* Counter Text - Independent positioning */}
-      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '100px' }}>
+      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '70px' }}>
         <p className="text-base sm:text-lg counter-text">
           ↓ {clickCount} people just clicked ↓
         </p>
