@@ -32,8 +32,8 @@ export default function MessageScreen({
         />
       </div>
 
-      {/* Message Container - Independent positioning */}
-      <div className="relative max-w-[420px] mx-auto" style={{ marginTop: '20px' }}>
+      {/* Message Container - Independent positioning - Scaled down */}
+      <div className="relative max-w-[360px] mx-auto" style={{ marginTop: '20px' }}>
         <img
           src="/images/message/message_container.png"
           alt="Message container"
