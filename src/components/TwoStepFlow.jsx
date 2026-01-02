@@ -82,14 +82,16 @@ export default function TwoStepFlow({ user }) {
       {/* Spacer to push logo down */}
       <div style={{ height: '40px' }} />
 
-      {/* Logo Badge at Top */}
-      <div className="relative z-20 mt-0 mb-6">
-        <img
-          src="/images/feedback/nocap-logo.png"
-          alt="NoCap.bio"
-          style={{ width: '120px', height: 'auto', maxWidth: '120px' }}
-        />
-      </div>
+      {/* Logo Badge at Top - Only show on step 1 */}
+      {step === 1 && (
+        <div className="relative z-20 mt-0 mb-6">
+          <img
+            src="/images/feedback/nocap-logo.png"
+            alt="NoCap.bio"
+            style={{ width: '120px', height: 'auto', maxWidth: '120px' }}
+          />
+        </div>
+      )}
 
       {/* Step Content with Animation */}
       <div className="relative z-10 w-full max-w-lg flex flex-col" style={{ marginTop: '50px' }}>
@@ -130,34 +132,38 @@ export default function TwoStepFlow({ user }) {
         </AnimatePresence>
       </div>
 
-      {/* Counter Text - Independent positioning */}
-      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '70px' }}>
-        <p className="text-base sm:text-lg counter-text">
-          ↓ {clickCount} people just clicked ↓
-        </p>
-      </div>
+      {/* Counter Text - Only show on step 1 */}
+      {step === 1 && (
+        <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '70px' }}>
+          <p className="text-base sm:text-lg counter-text">
+            ↓ {clickCount} people just clicked ↓
+          </p>
+        </div>
+      )}
 
-      {/* CTA Button - Independent positioning */}
-      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '12px' }}>
-        <motion.button
-          className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
-          animate={{
-            rotate: [0, -2, 2, -2, 0]
-          }}
-          transition={{
-            duration: 0.6,
-            repeat: Infinity,
-            repeatDelay: 1.4,
-            ease: "easeInOut"
-          }}
-        >
-          <img
-            src="/images/feedback/cta-button.png"
-            alt="Get your own ratings now!"
-            className="w-full"
-          />
-        </motion.button>
-      </div>
+      {/* CTA Button - Only show on step 1 */}
+      {step === 1 && (
+        <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '12px' }}>
+          <motion.button
+            className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
+            animate={{
+              rotate: [0, -2, 2, -2, 0]
+            }}
+            transition={{
+              duration: 0.6,
+              repeat: Infinity,
+              repeatDelay: 1.4,
+              ease: "easeInOut"
+            }}
+          >
+            <img
+              src="/images/feedback/cta-button.png"
+              alt="Get your own ratings now!"
+              className="w-full"
+            />
+          </motion.button>
+        </div>
+      )}
 
       {/* Footer Links - Independent positioning */}
       <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '50px' }}>

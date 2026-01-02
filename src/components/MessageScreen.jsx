@@ -23,18 +23,18 @@ export default function MessageScreen({
 
   return (
     <div className="w-full max-w-md mx-auto px-4">
-      {/* Confirmation Message - Using PNG */}
-      <div className="flex justify-center mb-8">
+      {/* Confirmation Message - Using PNG - Smaller and higher */}
+      <div className="flex justify-center mb-4">
         <img
           src="/images/message/text_message_screen.png"
           alt="Your answer is sent, but they'll never know it was you"
-          className="w-full max-w-[380px]"
+          className="w-full max-w-[280px]"
           style={{ height: 'auto' }}
         />
       </div>
 
-      {/* Message Container - Using PNG Background */}
-      <div className="relative mb-6">
+      {/* Message Container - Using PNG Background - Smaller */}
+      <div className="relative mb-6 max-w-[420px] mx-auto">
         <img
           src="/images/message/message_container.png"
           alt="Message container"
@@ -82,11 +82,11 @@ export default function MessageScreen({
         </div>
       </div>
 
-      {/* Send Button - Using PNG */}
+      {/* Send Button - Using PNG - Smaller */}
       <button
         onClick={handleSubmit}
         disabled={isLoading}
-        className="w-full max-w-[280px] mx-auto block bg-transparent border-0 p-0 outline-none transition-transform hover:scale-105"
+        className="w-full max-w-[200px] mx-auto block bg-transparent border-0 p-0 outline-none transition-transform hover:scale-105"
       >
         <img
           src="/images/message/sendbutton_messagescreen.png"
@@ -107,10 +107,10 @@ export default function MessageScreen({
         />
       </div>
 
-      {/* CTA Button - Using PNG with Animation */}
+      {/* CTA Button - Using PNG with Animation - Smaller */}
       <div className="flex justify-center mb-6">
         <motion.button
-          className="w-full max-w-[380px] bg-transparent border-0 p-0 outline-none"
+          className="w-full max-w-[300px] bg-transparent border-0 p-0 outline-none"
           animate={{
             rotate: [0, -2, 2, -2, 0]
           }}
