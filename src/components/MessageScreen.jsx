@@ -43,7 +43,7 @@ export default function MessageScreen({
         <img
           src="/images/message/text_message_screen.png"
           alt="Your answer is sent, but they'll never know it was you"
-          className="w-full max-w-[300px]"
+          className="w-full max-w-[340px]"
           style={{ height: 'auto' }}
         />
       </div>
@@ -86,12 +86,14 @@ export default function MessageScreen({
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="you can also send an anonymous reply to your friend 😈"
-            className="w-full h-32 p-4 bg-transparent border-0 resize-none focus:outline-none text-base placeholder-gray-400"
+            className="w-full h-32 p-4 bg-transparent border-0 resize-none focus:outline-none message-textarea"
             maxLength={500}
             disabled={isLoading}
             style={{
-              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro", system-ui, sans-serif',
-              color: '#666'
+              fontFamily: '"SF Pro", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+              fontWeight: '700',
+              color: '#666',
+              fontSize: '17px'
             }}
           />
         </div>
@@ -140,16 +142,6 @@ export default function MessageScreen({
             className="w-full"
           />
         </motion.button>
-      </div>
-
-      {/* Footer Links */}
-      <div className="flex justify-center" style={{ gap: '60px', marginTop: '30px' }}>
-        <a href="/terms" className="footer-link hover:opacity-40 transition-opacity no-underline text-sm">
-          Terms
-        </a>
-        <a href="/privacy" className="footer-link hover:opacity-40 transition-opacity no-underline text-sm">
-          Privacy
-        </a>
       </div>
     </div>
   )
