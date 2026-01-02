@@ -165,8 +165,8 @@ export default function TwoStepFlow({ user }) {
         </div>
       )}
 
-      {/* Footer Links - Independent positioning */}
-      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '50px' }}>
+      {/* Footer Links - Independent positioning - Moved down */}
+      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '80px' }}>
         <div className="flex text-sm" style={{ gap: '60px' }}>
           <a href="/terms" className="footer-link hover:opacity-40 transition-opacity no-underline">
             Terms

@@ -38,8 +38,8 @@ export default function MessageScreen({
 
   return (
     <div className="w-full max-w-md mx-auto px-4">
-      {/* Confirmation Message - Using PNG - Smaller and higher */}
-      <div className="flex justify-center mb-4">
+      {/* Confirmation Message - Independent positioning - Moved up */}
+      <div className="flex justify-center" style={{ marginTop: '0px' }}>
         <img
           src="/images/message/text_message_screen.png"
           alt="Your answer is sent, but they'll never know it was you"
@@ -48,8 +48,8 @@ export default function MessageScreen({
         />
       </div>
 
-      {/* Message Container - Using PNG Background - Smaller */}
-      <div className="relative mb-6 max-w-[420px] mx-auto">
+      {/* Message Container - Independent positioning */}
+      <div className="relative max-w-[420px] mx-auto" style={{ marginTop: '20px' }}>
         <img
           src="/images/message/message_container.png"
           alt="Message container"
@@ -99,11 +99,12 @@ export default function MessageScreen({
         </div>
       </div>
 
-      {/* Send Button - Using PNG - Smaller */}
+      {/* Send Button - Independent positioning */}
       <button
         onClick={handleSubmit}
         disabled={isLoading}
         className="w-full max-w-[200px] mx-auto block bg-transparent border-0 p-0 outline-none transition-transform hover:scale-105"
+        style={{ marginTop: '20px' }}
       >
         <img
           src="/images/message/sendbutton_messagescreen.png"
@@ -112,18 +113,15 @@ export default function MessageScreen({
         />
       </button>
 
-      {/* Spacer */}
-      <div style={{ height: '60px' }} />
-
-      {/* Counter - Dynamic text matching slider screen */}
-      <div className="flex justify-center mb-4">
+      {/* Counter - Independent positioning */}
+      <div className="flex justify-center" style={{ marginTop: '60px' }}>
         <p className="text-base sm:text-lg counter-text">
           ↓ {replyCount} people just got anonymous messages ↓
         </p>
       </div>
 
-      {/* CTA Button - Using PNG with Animation - Smaller */}
-      <div className="flex justify-center mb-6">
+      {/* CTA Button - Independent positioning - Moved down */}
+      <div className="flex justify-center" style={{ marginTop: '20px' }}>
         <motion.button
           className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
           animate={{
