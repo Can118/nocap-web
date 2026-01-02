@@ -11,6 +11,21 @@ export default function MessageScreen({
   isLoading
 }) {
   const [message, setMessage] = useState('')
+  const [replyCount, setReplyCount] = useState(77) // Dynamic counter starting at 77
+
+  // Animate counter - changes every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setReplyCount(prev => {
+        // Generate random change between -2 and +3, excluding 0
+        const changes = [-2, -1, 1, 2, 3]
+        const randomChange = changes[Math.floor(Math.random() * changes.length)]
+        return prev + randomChange
+      })
+    }, 1000) // Every 1 second
+
+    return () => clearInterval(interval)
+  }, [])
 
   const handleSubmit = async () => {
     if (!message.trim()) {
@@ -28,7 +43,7 @@ export default function MessageScreen({
         <img
           src="/images/message/text_message_screen.png"
           alt="Your answer is sent, but they'll never know it was you"
-          className="w-full max-w-[280px]"
+          className="w-full max-w-[300px]"
           style={{ height: 'auto' }}
         />
       </div>
@@ -98,19 +113,17 @@ export default function MessageScreen({
       {/* Spacer */}
       <div style={{ height: '60px' }} />
 
-      {/* Counter - Using PNG */}
+      {/* Counter - Dynamic text matching slider screen */}
       <div className="flex justify-center mb-4">
-        <img
-          src="/images/message/people_counter.png"
-          alt="77 people just got anonymous messages"
-          className="w-full max-w-[420px]"
-        />
+        <p className="text-base sm:text-lg counter-text">
+          ↓ {replyCount} people just got anonymous messages ↓
+        </p>
       </div>
 
       {/* CTA Button - Using PNG with Animation - Smaller */}
       <div className="flex justify-center mb-6">
         <motion.button
-          className="w-full max-w-[300px] bg-transparent border-0 p-0 outline-none"
+          className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
           animate={{
             rotate: [0, -2, 2, -2, 0]
           }}
