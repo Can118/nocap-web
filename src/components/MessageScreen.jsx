@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 export default function MessageScreen({
   onSubmit,
@@ -11,21 +10,6 @@ export default function MessageScreen({
   isLoading
 }) {
   const [message, setMessage] = useState('')
-  const [replyCount, setReplyCount] = useState(77) // Dynamic counter starting at 77
-
-  // Animate counter - changes every second
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setReplyCount(prev => {
-        // Generate random change between -2 and +3, excluding 0
-        const changes = [-2, -1, 1, 2, 3]
-        const randomChange = changes[Math.floor(Math.random() * changes.length)]
-        return prev + randomChange
-      })
-    }, 1000) // Every 1 second
-
-    return () => clearInterval(interval)
-  }, [])
 
   const handleSubmit = async () => {
     if (!message.trim()) {
@@ -112,35 +96,6 @@ export default function MessageScreen({
           className="w-full"
         />
       </button>
-
-      {/* Counter - Positioned to match slider screen */}
-      <div className="flex justify-center" style={{ marginTop: '70px' }}>
-        <p className="text-base sm:text-lg counter-text">
-          ↓ {replyCount} people just got anonymous messages ↓
-        </p>
-      </div>
-
-      {/* CTA Button - Positioned to match slider screen */}
-      <div className="flex justify-center" style={{ marginTop: '12px' }}>
-        <motion.button
-          className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
-          animate={{
-            rotate: [0, -2, 2, -2, 0]
-          }}
-          transition={{
-            duration: 0.6,
-            repeat: Infinity,
-            repeatDelay: 1.4,
-            ease: "easeInOut"
-          }}
-        >
-          <img
-            src="/images/message/getyourownreplies_button.png"
-            alt="Get your own replies"
-            className="w-full"
-          />
-        </motion.button>
-      </div>
     </div>
   )
 }

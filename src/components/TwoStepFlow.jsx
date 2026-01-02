@@ -11,16 +11,23 @@ import { sendAnonymousMessage } from '@/lib/messageService'
 export default function TwoStepFlow({ user }) {
   const [step, setStep] = useState(1) // 1 or 2
   const [isLoading, setIsLoading] = useState(false)
-  const [clickCount, setClickCount] = useState(133) // Animated counter
+  const [clickCount, setClickCount] = useState(133) // Animated counter for step 1
+  const [replyCount, setReplyCount] = useState(77) // Animated counter for step 2
   const [questionText, setQuestionText] = useState('') // Store the question
   const router = useRouter()
 
   const displayName = user.username || `user ${user.nocap_id}`
 
-  // Animate counter - changes every second by -2 to +3 (never 0)
+  // Animate counters - changes every second by -2 to +3 (never 0)
   useEffect(() => {
     const interval = setInterval(() => {
       setClickCount(prev => {
+        // Generate random change between -2 and +3, excluding 0
+        const changes = [-2, -1, 1, 2, 3]
+        const randomChange = changes[Math.floor(Math.random() * changes.length)]
+        return prev + randomChange
+      })
+      setReplyCount(prev => {
         // Generate random change between -2 and +3, excluding 0
         const changes = [-2, -1, 1, 2, 3]
         const randomChange = changes[Math.floor(Math.random() * changes.length)]
@@ -132,38 +139,43 @@ export default function TwoStepFlow({ user }) {
         </AnimatePresence>
       </div>
 
-      {/* Counter Text - Only show on step 1 */}
-      {step === 1 && (
-        <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '70px' }}>
-          <p className="text-base sm:text-lg counter-text">
-            ↓ {clickCount} people just clicked ↓
-          </p>
-        </div>
-      )}
+      {/* Counter Text - Show on both steps with different content */}
+      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '70px' }}>
+        <p className="text-base sm:text-lg counter-text">
+          {step === 1
+            ? `↓ ${clickCount} people just clicked ↓`
+            : `↓ ${replyCount} people just got anonymous messages ↓`
+          }
+        </p>
+      </div>
 
-      {/* CTA Button - Only show on step 1 */}
-      {step === 1 && (
-        <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '12px' }}>
-          <motion.button
-            className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
-            animate={{
-              rotate: [0, -2, 2, -2, 0]
-            }}
-            transition={{
-              duration: 0.6,
-              repeat: Infinity,
-              repeatDelay: 1.4,
-              ease: "easeInOut"
-            }}
-          >
-            <img
-              src="/images/feedback/cta-button.png"
-              alt="Get your own ratings now!"
-              className="w-full"
-            />
-          </motion.button>
-        </div>
-      )}
+      {/* CTA Button - Show on both steps with different images */}
+      <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '12px' }}>
+        <motion.button
+          className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
+          animate={{
+            rotate: [0, -2, 2, -2, 0]
+          }}
+          transition={{
+            duration: 0.6,
+            repeat: Infinity,
+            repeatDelay: 1.4,
+            ease: "easeInOut"
+          }}
+        >
+          <img
+            src={step === 1
+              ? "/images/feedback/cta-button.png"
+              : "/images/message/getyourownreplies_button.png"
+            }
+            alt={step === 1
+              ? "Get your own ratings now!"
+              : "Get your own replies"
+            }
+            className="w-full"
+          />
+        </motion.button>
+      </div>
 
       {/* Footer Links - Independent positioning - Moved down */}
       <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '80px' }}>
