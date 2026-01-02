@@ -12,14 +12,20 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
   // Track knob position
   const x = useMotionValue(0)
 
+  // Calculate max drag distance (container width minus knob width)
+  const knobWidth = containerWidth * 0.25 // 25% of container
+  const maxDrag = containerWidth - knobWidth
+
   // Update container width on mount and resize
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
         const width = containerRef.current.offsetWidth
         setContainerWidth(width)
-        // Set initial position to center
-        x.set(width / 2)
+        // Set initial position to center of draggable range
+        const knobW = width * 0.25
+        const maxD = width - knobW
+        x.set(maxD / 2)
       }
     }
 
@@ -27,10 +33,6 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
     window.addEventListener('resize', updateWidth)
     return () => window.removeEventListener('resize', updateWidth)
   }, [x])
-
-  // Calculate max drag distance (container width minus knob width)
-  const knobWidth = containerWidth * 0.25 // 25% of container
-  const maxDrag = containerWidth - knobWidth
 
   const handleDragEnd = () => {
     if (!containerRef.current) return
