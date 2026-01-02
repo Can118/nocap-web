@@ -113,15 +113,15 @@ export default function MessageScreen({
         />
       </button>
 
-      {/* Counter - Independent positioning */}
-      <div className="flex justify-center" style={{ marginTop: '60px' }}>
+      {/* Counter - Positioned to match slider screen */}
+      <div className="flex justify-center" style={{ marginTop: '70px' }}>
         <p className="text-base sm:text-lg counter-text">
           ↓ {replyCount} people just got anonymous messages ↓
         </p>
       </div>
 
-      {/* CTA Button - Independent positioning - Moved down */}
-      <div className="flex justify-center" style={{ marginTop: '20px' }}>
+      {/* CTA Button - Positioned to match slider screen */}
+      <div className="flex justify-center" style={{ marginTop: '12px' }}>
         <motion.button
           className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
           animate={{
