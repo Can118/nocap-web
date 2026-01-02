@@ -23,7 +23,7 @@ export default function MessageScreen({
   return (
     <div className="w-full max-w-md mx-auto px-4">
       {/* Confirmation Message - Independent positioning - Moved up */}
-      <div className="flex justify-center" style={{ marginTop: '-20px' }}>
+      <div className="flex justify-center" style={{ marginTop: '-40px' }}>
         <img
           src="/images/message/text_message_screen.png"
           alt="Your answer is sent, but they'll never know it was you"
