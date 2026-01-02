@@ -51,7 +51,7 @@ export default function MessageScreen({
             textAlign: 'center'
           }}
         >
-          <h2 className="question-text" style={{ fontSize: '18px' }}>
+          <h2 className="question-text" style={{ fontSize: '18px', WebkitTextStroke: '3px #757101', textStroke: '3px #757101' }}>
             {questionText}
           </h2>
         </div>
