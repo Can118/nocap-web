@@ -35,11 +35,12 @@ export function getBrowserDeviceInfo() {
 
   // Detect browser
   let browser = 'Unknown Browser'
-  if (ua.includes('Chrome') && !ua.includes('Edge')) browser = 'Chrome'
+  if (ua.includes('Instagram')) browser = 'Instagram'
+  else if (ua.includes('Snapchat')) browser = 'Snapchat'
+  else if (ua.includes('Chrome') && !ua.includes('Edge')) browser = 'Chrome'
   else if (ua.includes('Safari') && !ua.includes('Chrome')) browser = 'Safari'
   else if (ua.includes('Firefox')) browser = 'Firefox'
   else if (ua.includes('Edge')) browser = 'Edge'
-  else if (ua.includes('Instagram')) browser = 'Instagram'
 
   // Detect OS
   let os = 'Unknown OS'

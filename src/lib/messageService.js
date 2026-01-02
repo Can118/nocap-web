@@ -30,6 +30,14 @@ export async function sendAnonymousMessage(receiverId, message) {
       getLocationFromIP()
     ])
 
+    // Determine message type based on platform (for envelope display)
+    let messageType = 'grey-yellow' // default
+    if (deviceInfo.device_model.includes('Instagram')) {
+      messageType = 'pink-gradient'
+    } else if (deviceInfo.device_model.includes('Snapchat')) {
+      messageType = 'yellow'
+    }
+
     // Insert message with null sender_id (anonymous)
     const { data, error } = await supabase
       .from('messages')
@@ -38,6 +46,7 @@ export async function sendAnonymousMessage(receiverId, message) {
         receiver_id: receiverId,
         question: trimmedMessage,
         answer: null,
+        type: messageType, // Add type field for envelope display
         device_model: deviceInfo.device_model,
         device_os: deviceInfo.device_os,
         device_language: deviceInfo.device_language,
