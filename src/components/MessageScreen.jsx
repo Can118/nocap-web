@@ -51,7 +51,7 @@ export default function MessageScreen({
             textAlign: 'center'
           }}
         >
-          <h2 className="text-lg sm:text-xl question-text">
+          <h2 className="question-text" style={{ fontSize: '18px' }}>
             {questionText}
           </h2>
         </div>
