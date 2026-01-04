@@ -43,7 +43,8 @@ export async function sendAnonymousMessage(receiverId, message, source = 'instag
 
     // Insert message with null sender_id (anonymous)
     // NOTE: question = what app user created, answer = what anonymous sender typed
-    const { data, error } = await supabase
+    // Don't use .select() because SELECT policy blocks anonymous users from reading back
+    const { error } = await supabase
       .from('messages')
       .insert([{
         sender_id: null, // ANONYMOUS!
@@ -58,17 +59,25 @@ export async function sendAnonymousMessage(receiverId, message, source = 'instag
         location_formatted: locationInfo.formatted,
         ip_address: locationInfo.ip
       }])
-      .select()
-      .single()
 
     if (error) {
       console.error('Message submission error:', error)
-      throw error
+      console.error('Error details:', JSON.stringify(error, null, 2))
+      console.error('Insert payload:', {
+        sender_id: null,
+        receiver_id: receiverId,
+        question: questionToSave,
+        answer: trimmedMessage,
+        source: validatedSource
+      })
+      throw new Error(`Failed to insert message: ${error.message || error.code || 'Unknown error'}`)
     }
 
-    return data
+    console.log('✅ Anonymous message sent successfully')
+    return { success: true }
   } catch (error) {
     console.error('Error in sendAnonymousMessage:', error)
+    console.error('Stack trace:', error.stack)
     throw error
   }
 }
