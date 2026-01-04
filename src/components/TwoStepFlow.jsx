@@ -134,6 +134,7 @@ export default function TwoStepFlow({ user, questionId, questionText }) {
                 isLoading={isLoading}
                 questionId={questionId}
                 questionText={questionText}
+                hideStats={true}
               />
             </motion.div>
           )}

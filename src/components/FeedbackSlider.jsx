@@ -2,12 +2,14 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { motion, useMotionValue, useTransform } from 'framer-motion'
+import { getQuestionStats } from '@/lib/feedbackService'
 
-export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
+export default function FeedbackSlider({ onSubmit, receiverName, isLoading, questionId, questionText, hideStats = false }) {
   const [hasInteracted, setHasInteracted] = useState(false)
   const [rating, setRating] = useState(0) // -100 to +100
   const containerRef = useRef(null)
   const [containerWidth, setContainerWidth] = useState(300)
+  const [stats, setStats] = useState({ totalRatings: 0, percentageYes: 0 })
 
   // Track knob position
   const x = useMotionValue(0)
@@ -33,6 +35,24 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
     window.addEventListener('resize', updateWidth)
     return () => window.removeEventListener('resize', updateWidth)
   }, [x])
+
+  // Fetch real-time statistics (only if not hidden)
+  useEffect(() => {
+    if (hideStats) return
+
+    const fetchStats = async () => {
+      if (questionId) {
+        const questionStats = await getQuestionStats(questionId)
+        setStats(questionStats)
+      }
+    }
+
+    fetchStats()
+
+    // Refresh stats every 5 seconds for real-time updates
+    const interval = setInterval(fetchStats, 5000)
+    return () => clearInterval(interval)
+  }, [questionId, hideStats])
 
   const handleDragEnd = () => {
     if (!containerRef.current) return
@@ -62,7 +82,7 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
       <div className="-mt-16">
         {/* Question Text */}
         <h2 className="text-center text-2xl sm:text-3xl question-text mb-6 px-2">
-          you think i stalk u on a fake account?
+          {questionText || 'you think i stalk u on a fake account?'}
         </h2>
 
         {/* Slider Container - sliderbar_container.png as background */}
@@ -72,6 +92,18 @@ export default function FeedbackSlider({ onSubmit, receiverName, isLoading }) {
           alt="Slider"
           className="w-full h-auto"
         />
+
+        {/* Real-time Statistics - Positioned below slider - Only show if not hidden */}
+        {!hideStats && (
+          <div className="absolute bottom-0 left-0 right-0 flex justify-between px-4" style={{ transform: 'translateY(100%)', paddingTop: '8px' }}>
+            <span className="text-sm sm:text-base font-bold text-gray-700">
+              {stats.totalRatings} rating{stats.totalRatings !== 1 ? 's' : ''}
+            </span>
+            <span className="text-sm sm:text-base font-bold" style={{ color: '#F80261' }}>
+              {stats.percentageYes}% yes
+            </span>
+          </div>
+        )}
 
         {/* Slider positioned absolutely over the yellow card */}
         <div
