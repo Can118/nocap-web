@@ -8,15 +8,32 @@ import MessageScreen from './MessageScreen'
 import { submitFeedback } from '@/lib/feedbackService'
 import { sendAnonymousMessage } from '@/lib/messageService'
 
-export default function TwoStepFlow({ user }) {
+export default function TwoStepFlow({ user, questionId, questionText }) {
   const [step, setStep] = useState(1) // 1 or 2
   const [isLoading, setIsLoading] = useState(false)
   const [clickCount, setClickCount] = useState(133) // Animated counter for step 1
   const [replyCount, setReplyCount] = useState(77) // Animated counter for step 2
-  const [questionText, setQuestionText] = useState('') // Store the question
+  const [source, setSource] = useState('instagram') // Track message source (instagram/snapchat)
   const router = useRouter()
 
   const displayName = user.username || `user ${user.nocap_id}`
+
+  // Capture source parameter from URL on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search)
+      const sourceParam = urlParams.get('source')
+
+      // Validate and set source (must be 'instagram' or 'snapchat')
+      if (sourceParam === 'snapchat' || sourceParam === 'instagram') {
+        setSource(sourceParam)
+        console.log('📍 Message source detected:', sourceParam)
+      } else {
+        setSource('instagram') // Default to instagram
+        console.log('📍 Message source defaulted to: instagram')
+      }
+    }
+  }, [])
 
   // Animate counters - changes every second by -2 to +3 (never 0)
   useEffect(() => {
@@ -42,7 +59,7 @@ export default function TwoStepFlow({ user }) {
   const handleFeedbackSubmit = async (rating) => {
     setIsLoading(true)
     try {
-      await submitFeedback(user.id, rating)
+      await submitFeedback(user.id, rating, questionId)
       // Move to Screen 2 after successful feedback submission
       setStep(2)
     } catch (error) {
@@ -59,7 +76,7 @@ export default function TwoStepFlow({ user }) {
   const handleMessageSubmit = async (message) => {
     setIsLoading(true)
     try {
-      await sendAnonymousMessage(user.id, message)
+      await sendAnonymousMessage(user.id, message, source, questionText)
       // Redirect to success page
       router.push('/success')
     } catch (error) {
@@ -115,6 +132,8 @@ export default function TwoStepFlow({ user }) {
                 onSubmit={handleFeedbackSubmit}
                 receiverName={displayName}
                 isLoading={isLoading}
+                questionId={questionId}
+                questionText={questionText}
               />
             </motion.div>
           )}
@@ -131,7 +150,7 @@ export default function TwoStepFlow({ user }) {
                 onSubmit={handleMessageSubmit}
                 onSkip={handleSkip}
                 receiverName={displayName}
-                questionText="you think i stalk u on a fake account?"
+                questionText={questionText || "what do you really think about me? 👀"}
                 isLoading={isLoading}
               />
             </motion.div>

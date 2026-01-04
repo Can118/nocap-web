@@ -8,6 +8,11 @@ export default function ErrorPage({ searchParams }) {
           title: 'User Not Found',
           description: 'This user doesn\'t exist or the link is invalid.',
         }
+      case 'question_not_found':
+        return {
+          title: 'Question Not Found',
+          description: 'This question doesn\'t exist or has been deleted.',
+        }
       default:
         return {
           title: 'Oops!',
