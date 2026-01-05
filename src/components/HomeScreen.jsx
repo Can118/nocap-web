@@ -6,7 +6,7 @@ export default function HomeScreen() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white p-4">
-      <div className="relative max-w-md w-full">
+      <div className="relative max-w-lg w-full">
         {/* Main yellow template image with App Store button inside */}
         <div className="relative w-full aspect-[9/16]">
           <Image
@@ -18,7 +18,7 @@ export default function HomeScreen() {
           />
 
           {/* App Store Download Button - positioned inside yellow template */}
-          <div className="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 z-10">
+          <div className="absolute bottom-[13%] left-1/2 transform -translate-x-1/2 z-10">
             <a
               href={APP_STORE_LINK}
               target="_blank"
@@ -28,8 +28,8 @@ export default function HomeScreen() {
               <Image
                 src="/images/homescreen/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
                 alt="Download on the App Store"
-                width={160}
-                height={48}
+                width={220}
+                height={66}
                 className="object-contain"
               />
             </a>
