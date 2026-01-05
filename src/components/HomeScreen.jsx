@@ -5,7 +5,7 @@ export default function HomeScreen() {
   const APP_STORE_LINK = "https://apps.apple.com/app/nocap" // TODO: Update with actual App Store URL
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-white p-4">
       <div className="relative max-w-md w-full">
         {/* Main yellow template image */}
         <div className="relative w-full aspect-[9/16] mb-8">
