@@ -6,7 +6,7 @@ export default function HomeScreen() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white p-4">
-      <div className="relative max-w-lg w-full">
+      <div className="relative max-w-2xl w-full">
         {/* Main yellow template image with App Store button inside */}
         <div className="relative w-full aspect-[9/16]">
           <Image
