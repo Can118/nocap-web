@@ -18,7 +18,7 @@ export default function HomeScreen() {
           />
 
           {/* App Store Download Button - positioned inside yellow template */}
-          <div className="absolute bottom-[13%] left-1/2 transform -translate-x-1/2 z-10">
+          <div className="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 z-10">
             <a
               href={APP_STORE_LINK}
               target="_blank"
