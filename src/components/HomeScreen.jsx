@@ -13,7 +13,7 @@ export default function HomeScreen() {
             src="/images/homescreen/nocapweb_mainscreen.png"
             alt="NoCap - Real opinions from real friends"
             fill
-            className="object-contain"
+            className="object-cover"
             priority
           />
 
