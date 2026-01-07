@@ -5,42 +5,49 @@ export const metadata = {
 
 export default function TermsOfUsePage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 md:p-12">
-        <div className="prose prose-lg max-w-none">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">NoCap Terms of Use</h1>
-          <p className="text-sm text-gray-600 mb-8">Last Updated: January 6, 2026</p>
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-gray-50 py-8 px-4 sm:px-6 lg:px-8" style={{ scrollBehavior: 'smooth' }}>
+      {/* Hero Section */}
+      <div className="max-w-6xl mx-auto mb-8">
+        <div className="bg-black text-white rounded-2xl p-8 md:p-12 shadow-2xl">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-12 h-12 bg-[#FCF300] rounded-xl flex items-center justify-center">
+              <span className="text-2xl font-black text-black">NC</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-black">NoCap</h1>
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 text-[#FCF300]">Terms of Use</h2>
+          <p className="text-gray-300 text-sm">Last Updated: January 6, 2026</p>
+        </div>
+      </div>
 
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
-            <p className="text-sm text-gray-800">
-              <strong>IMPORTANT:</strong> PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING NOCAP. BY ACCESSING OR USING THE SERVICE, YOU AGREE TO BE BOUND BY THESE TERMS. IF YOU DO NOT AGREE TO THESE TERMS, DO NOT USE THE SERVICE.
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* Table of Contents - Sticky Sidebar */}
+        <aside className="lg:col-span-1">
+          <div className="lg:sticky lg:top-8 bg-white rounded-2xl shadow-xl p-6 border-2 border-[#FCF300]">
+            <h3 className="text-lg font-black text-gray-900 mb-4 flex items-center gap-2">
+              <span className="text-[#FCF300]">📋</span>
+              Contents
+            </h3>
+            <nav className="space-y-2">
+              <a href="#acceptance" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">1. Acceptance</a>
+              <a href="#eligibility" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">2. Eligibility</a>
+              <a href="#account" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">3. Account</a>
+              <a href="#service" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">4. Service</a>
+              <a href="#conduct" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">5. User Conduct</a>
+              <a href="#contact" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">21. Contact</a>
+            </nav>
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <div className="lg:col-span-3 bg-white rounded-2xl shadow-xl p-8 md:p-12">
+          <div className="prose prose-lg max-w-none [&_h2]:text-[#191919] [&_h2]:font-extrabold [&_h2]:mt-10 [&_h2]:mb-5 [&_h2]:pb-2 [&_h2]:border-b-4 [&_h2]:border-[#FCF300] [&_h3]:text-[#191919] [&_h3]:font-bold [&_h3]:mt-6 [&_a]:text-[#FCF300] [&_a]:no-underline [&_a]:font-semibold [&_a]:transition-all hover:[&_a]:text-[#191919] hover:[&_a]:underline">
+
+          <div className="bg-gradient-to-r from-[#FCF300] to-yellow-200 rounded-xl p-6 mb-8 border-2 border-black shadow-lg">
+            <p className="text-sm text-black font-bold leading-relaxed">
+              ⚠️ IMPORTANT: PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING NOCAP. BY ACCESSING OR USING THE SERVICE, YOU AGREE TO BE BOUND BY THESE TERMS. IF YOU DO NOT AGREE TO THESE TERMS, DO NOT USE THE SERVICE.
             </p>
           </div>
-
-          <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Table of Contents</h2>
-          <ol className="list-decimal list-inside space-y-2 text-gray-700 mb-8">
-            <li><a href="#acceptance" className="text-blue-600 hover:underline">Acceptance of Terms</a></li>
-            <li><a href="#eligibility" className="text-blue-600 hover:underline">Eligibility and Age Restrictions</a></li>
-            <li><a href="#account" className="text-blue-600 hover:underline">Account Registration and Security</a></li>
-            <li><a href="#service" className="text-blue-600 hover:underline">Description of Service</a></li>
-            <li><a href="#conduct" className="text-blue-600 hover:underline">User Conduct and Prohibited Activities</a></li>
-            <li><a href="#ip" className="text-blue-600 hover:underline">Content and Intellectual Property</a></li>
-            <li><a href="#anonymous" className="text-blue-600 hover:underline">Anonymous Messaging and Privacy</a></li>
-            <li><a href="#ugc" className="text-blue-600 hover:underline">User-Generated Content</a></li>
-            <li><a href="#moderation" className="text-blue-600 hover:underline">Content Moderation and Reporting</a></li>
-            <li><a href="#pro" className="text-blue-600 hover:underline">NoCap Pro and Paid Features</a></li>
-            <li><a href="#disclaimers" className="text-blue-600 hover:underline">Disclaimers and Limitations on Service</a></li>
-            <li><a href="#warranties" className="text-blue-600 hover:underline">Disclaimer of Warranties</a></li>
-            <li><a href="#liability" className="text-blue-600 hover:underline">Limitation of Liability</a></li>
-            <li><a href="#indemnification" className="text-blue-600 hover:underline">Indemnification</a></li>
-            <li><a href="#third-party" className="text-blue-600 hover:underline">Third-Party Services and Links</a></li>
-            <li><a href="#termination" className="text-blue-600 hover:underline">Termination and Account Suspension</a></li>
-            <li><a href="#dispute" className="text-blue-600 hover:underline">Dispute Resolution and Arbitration</a></li>
-            <li><a href="#governing" className="text-blue-600 hover:underline">Governing Law</a></li>
-            <li><a href="#changes" className="text-blue-600 hover:underline">Changes to Terms</a></li>
-            <li><a href="#misc" className="text-blue-600 hover:underline">Miscellaneous</a></li>
-            <li><a href="#contact" className="text-blue-600 hover:underline">Contact Information</a></li>
-          </ol>
 
           <section id="acceptance" className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Acceptance of Terms</h2>
@@ -142,9 +149,9 @@ export default function TermsOfUsePage() {
               <li>Send anonymous messages to other users</li>
               <li>View metadata "clues" about message senders (with NoCap Pro or unlock feature)</li>
             </ul>
-            <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
-              <p className="text-sm text-gray-800">
-                <strong>IMPORTANT:</strong> "Anonymous" messaging is NOT fully anonymous. We collect metadata (device info, location, IP address) that may be shared with message recipients.
+            <div className="bg-gradient-to-r from-red-100 to-red-50 rounded-xl p-5 mb-4 border-l-4 border-red-500 shadow-md">
+              <p className="text-sm text-gray-900 font-semibold leading-relaxed">
+                <span className="text-red-600">⚠️ IMPORTANT:</span> "Anonymous" messaging is NOT fully anonymous. We collect metadata (device info, location, IP address) that may be shared with message recipients.
               </p>
             </div>
 
@@ -209,9 +216,9 @@ export default function TermsOfUsePage() {
               <li>Attempt to contact, communicate with, or solicit minors</li>
               <li>Share links or content intended to attract minors to the Service</li>
             </ul>
-            <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
-              <p className="text-sm text-gray-800">
-                <strong>IMPORTANT:</strong> NoCap is for users 18+ only. Any activity involving minors will result in immediate account termination and reporting to law enforcement.
+            <div className="bg-gradient-to-r from-red-100 to-red-50 rounded-xl p-5 mb-4 border-l-4 border-red-500 shadow-md">
+              <p className="text-sm text-gray-900 font-semibold leading-relaxed">
+                <span className="text-red-600">⚠️ IMPORTANT:</span> NoCap is for users 18+ only. Any activity involving minors will result in immediate account termination and reporting to law enforcement.
               </p>
             </div>
 
@@ -262,46 +269,73 @@ export default function TermsOfUsePage() {
             </ul>
           </section>
 
-          <div className="my-12 p-6 bg-gray-100 rounded-lg">
-            <p className="text-center text-gray-600">
-              <strong>Note:</strong> This page shows a formatted excerpt of our Terms of Use. The complete terms include sections 6-21 covering Content & Intellectual Property, Anonymous Messaging, User-Generated Content, Content Moderation, NoCap Pro, Disclaimers, Warranties, Liability, Indemnification, Third-Party Services, Termination, Dispute Resolution, Governing Law, and more.
-            </p>
-            <p className="text-center text-gray-600 mt-4">
-              For the complete Terms of Use document, please scroll down or <a href="#contact" className="text-blue-600 hover:underline">contact us</a> for assistance.
-            </p>
+          <div className="my-12 p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border-2 border-gray-200 shadow-lg">
+            <div className="text-center">
+              <span className="text-4xl mb-4 inline-block">📄</span>
+              <p className="text-gray-700 font-semibold mb-3">
+                Note: This page shows a formatted excerpt of our Terms of Use.
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                The complete terms include sections 6-21 covering Content & Intellectual Property, Anonymous Messaging, User-Generated Content, Content Moderation, NoCap Pro, Disclaimers, Warranties, Liability, Indemnification, Third-Party Services, Termination, Dispute Resolution, Governing Law, and more.
+              </p>
+              <p className="text-gray-600 text-sm mt-4">
+                For the complete Terms of Use document, please scroll down or <a href="#contact" className="font-semibold hover:underline">contact us</a> for assistance.
+              </p>
+            </div>
           </div>
 
           <section id="contact" className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">21. Contact Information</h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 mb-6">
               If you have questions, concerns, or feedback regarding these Terms of Use, please contact us:
             </p>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="text-gray-700"><strong>Email:</strong> [INSERT YOUR SUPPORT EMAIL]</p>
-              <p className="text-gray-700"><strong>Website:</strong> nocap.bio</p>
-              <p className="text-gray-700"><strong>Address:</strong> [INSERT YOUR BUSINESS ADDRESS]</p>
+            <div className="bg-gradient-to-br from-[#FCF300] to-yellow-100 p-6 rounded-xl border-2 border-black shadow-lg">
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">📧</span>
+                  <div>
+                    <p className="text-black font-bold">Email</p>
+                    <p className="text-gray-900">[INSERT YOUR SUPPORT EMAIL]</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">🌐</span>
+                  <div>
+                    <p className="text-black font-bold">Website</p>
+                    <p className="text-gray-900">nocap.bio</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">📍</span>
+                  <div>
+                    <p className="text-black font-bold">Address</p>
+                    <p className="text-gray-900">[INSERT YOUR BUSINESS ADDRESS]</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="text-gray-700 mt-4">
-              For legal inquiries, include "Legal Inquiry" in the subject line.
+            <p className="text-gray-700 mt-6 text-sm">
+              💼 For legal inquiries, include "Legal Inquiry" in the subject line.
             </p>
-            <p className="text-gray-700">
-              We will respond to your inquiry within a reasonable timeframe.
+            <p className="text-gray-700 text-sm">
+              ⏱️ We will respond to your inquiry within a reasonable timeframe.
             </p>
           </section>
 
-          <div className="border-t-2 border-gray-300 pt-8 mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Acknowledgment</h2>
-            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-              <p className="text-gray-800 font-semibold">
+          <div className="border-t-4 border-[#FCF300] pt-10 mt-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Acknowledgment</h2>
+            <div className="bg-gradient-to-r from-[#FCF300] to-yellow-200 rounded-xl p-6 mb-6 border-2 border-black shadow-lg">
+              <p className="text-black font-bold text-center leading-relaxed">
                 BY USING NOCAP, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS OF USE AND OUR PRIVACY POLICY.
               </p>
-              <p className="text-gray-800 mt-2">
+              <p className="text-black font-semibold text-center mt-3">
                 IF YOU DO NOT AGREE, DO NOT USE THE SERVICE.
               </p>
             </div>
-            <p className="text-center text-gray-500 text-sm mt-8">
+            <p className="text-center text-gray-500 text-sm mt-8 font-medium">
               © 2026 NoCap. All rights reserved.
             </p>
+          </div>
           </div>
         </div>
       </div>

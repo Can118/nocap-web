@@ -5,34 +5,49 @@ export const metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 md:p-12">
-        <div className="prose prose-lg max-w-none">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">NoCap Privacy Policy</h1>
-          <p className="text-sm text-gray-600 mb-8">Last Updated: January 6, 2026</p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-gray-50 py-8 px-4 sm:px-6 lg:px-8" style={{ scrollBehavior: 'smooth' }}>
+      {/* Hero Section */}
+      <div className="max-w-6xl mx-auto mb-8">
+        <div className="bg-black text-white rounded-2xl p-8 md:p-12 shadow-2xl">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-12 h-12 bg-[#FCF300] rounded-xl flex items-center justify-center">
+              <span className="text-2xl font-black text-black">NC</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-black">NoCap</h1>
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 text-[#FCF300]">Privacy Policy</h2>
+          <p className="text-gray-300 text-sm">Last Updated: January 6, 2026</p>
+        </div>
+      </div>
 
-          <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
-            <p className="text-sm text-gray-800">
-              <strong>IMPORTANT:</strong> This Privacy Policy describes how NoCap ("we," "us," or "our") collects, uses, discloses, and protects your personal information when you use the NoCap mobile application and associated services. By using NoCap, you agree to the collection and use of information in accordance with this Privacy Policy.
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* Table of Contents - Sticky Sidebar */}
+        <aside className="lg:col-span-1">
+          <div className="lg:sticky lg:top-8 bg-white rounded-2xl shadow-xl p-6 border-2 border-[#FCF300]">
+            <h3 className="text-lg font-black text-gray-900 mb-4 flex items-center gap-2">
+              <span className="text-[#FCF300]">🔒</span>
+              Contents
+            </h3>
+            <nav className="space-y-2">
+              <a href="#age" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">1. Age Restrictions</a>
+              <a href="#collect" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">2. Information We Collect</a>
+              <a href="#use" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">3. How We Use Info</a>
+              <a href="#sharing" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">4. Sharing & Disclosure</a>
+              <a href="#coppa" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">9. Children's Privacy</a>
+              <a href="#contact" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">13. Contact Us</a>
+            </nav>
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <div className="lg:col-span-3 bg-white rounded-2xl shadow-xl p-8 md:p-12">
+          <div className="prose prose-lg max-w-none [&_h2]:text-[#191919] [&_h2]:font-extrabold [&_h2]:mt-10 [&_h2]:mb-5 [&_h2]:pb-2 [&_h2]:border-b-4 [&_h2]:border-[#FCF300] [&_h3]:text-[#191919] [&_h3]:font-bold [&_h3]:mt-6 [&_a]:text-[#FCF300] [&_a]:no-underline [&_a]:font-semibold [&_a]:transition-all hover:[&_a]:text-[#191919] hover:[&_a]:underline">
+
+          <div className="bg-gradient-to-r from-blue-100 to-blue-50 rounded-xl p-6 mb-8 border-l-4 border-blue-500 shadow-lg">
+            <p className="text-sm text-black font-bold leading-relaxed">
+              <span className="text-blue-600">🔒 IMPORTANT:</span> This Privacy Policy describes how NoCap ("we," "us," or "our") collects, uses, discloses, and protects your personal information when you use the NoCap mobile application and associated services. By using NoCap, you agree to the collection and use of information in accordance with this Privacy Policy.
             </p>
           </div>
-
-          <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Table of Contents</h2>
-          <ol className="list-decimal list-inside space-y-2 text-gray-700 mb-8">
-            <li><a href="#age" className="text-blue-600 hover:underline">Age Restrictions and Eligibility</a></li>
-            <li><a href="#collect" className="text-blue-600 hover:underline">Information We Collect</a></li>
-            <li><a href="#use" className="text-blue-600 hover:underline">How We Use Your Information</a></li>
-            <li><a href="#sharing" className="text-blue-600 hover:underline">Information Sharing and Disclosure</a></li>
-            <li><a href="#retention" className="text-blue-600 hover:underline">Data Retention</a></li>
-            <li><a href="#rights" className="text-blue-600 hover:underline">Your Privacy Rights and Choices</a></li>
-            <li><a href="#third-party" className="text-blue-600 hover:underline">Third-Party Services</a></li>
-            <li><a href="#international" className="text-blue-600 hover:underline">International Data Transfers</a></li>
-            <li><a href="#coppa" className="text-blue-600 hover:underline">Children's Privacy (COPPA Compliance)</a></li>
-            <li><a href="#security" className="text-blue-600 hover:underline">Data Security</a></li>
-            <li><a href="#california" className="text-blue-600 hover:underline">California Privacy Rights (CCPA)</a></li>
-            <li><a href="#changes" className="text-blue-600 hover:underline">Changes to This Privacy Policy</a></li>
-            <li><a href="#contact" className="text-blue-600 hover:underline">Contact Us</a></li>
-          </ol>
 
           <section id="age" className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Age Restrictions and Eligibility</h2>
@@ -92,9 +107,9 @@ export default function PrivacyPolicyPage() {
               <li>Formatted location string (e.g., "near [City Name]")</li>
             </ul>
 
-            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-              <p className="text-sm text-gray-800">
-                <strong>IMPORTANT:</strong> We use IP-based geolocation, NOT GPS. Your precise location is never collected. We use the third-party service ip-api.com to determine your approximate city-level location based on your IP address.
+            <div className="bg-gradient-to-r from-[#FCF300] to-yellow-100 rounded-xl p-5 mb-4 border-l-4 border-yellow-500 shadow-md">
+              <p className="text-sm text-black font-semibold leading-relaxed">
+                <span className="text-yellow-700">⚠️ IMPORTANT:</span> We use IP-based geolocation, NOT GPS. Your precise location is never collected. We use the third-party service ip-api.com to determine your approximate city-level location based on your IP address.
               </p>
             </div>
 
@@ -168,9 +183,11 @@ export default function PrivacyPolicyPage() {
               <li><strong>Support Responses:</strong> To respond to your inquiries and provide customer support</li>
             </ul>
 
-            <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
-              <p className="text-gray-800 font-semibold mb-2">WE DO NOT USE YOUR INFORMATION FOR:</p>
-              <ul className="list-disc list-inside space-y-1 text-gray-700 ml-4">
+            <div className="bg-gradient-to-r from-green-100 to-green-50 rounded-xl p-5 mb-4 border-l-4 border-green-500 shadow-md">
+              <p className="text-gray-900 font-bold mb-3 flex items-center gap-2">
+                <span className="text-green-600">✓</span> WE DO NOT USE YOUR INFORMATION FOR:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4 font-medium">
                 <li>Targeted advertising (we do not currently run ads)</li>
                 <li>Selling your data to third parties</li>
                 <li>Creating detailed user profiles for marketing purposes</li>
@@ -196,9 +213,9 @@ export default function PrivacyPolicyPage() {
               <li>Timestamp when the message was sent</li>
             </ul>
 
-            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-              <p className="text-sm text-gray-800">
-                <strong>IMPORTANT:</strong> Even if you send an "anonymous" message, this metadata is collected and can be revealed to the recipient. True anonymity is not guaranteed.
+            <div className="bg-gradient-to-r from-[#FCF300] to-yellow-100 rounded-xl p-5 mb-4 border-l-4 border-yellow-500 shadow-md">
+              <p className="text-sm text-black font-semibold leading-relaxed">
+                <span className="text-yellow-700">⚠️ IMPORTANT:</span> Even if you send an "anonymous" message, this metadata is collected and can be revealed to the recipient. True anonymity is not guaranteed.
               </p>
             </div>
 
@@ -238,13 +255,19 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          <div className="my-12 p-6 bg-gray-100 rounded-lg">
-            <p className="text-center text-gray-600">
-              <strong>Note:</strong> This page shows a formatted excerpt of our Privacy Policy. The complete policy includes sections 5-13 covering Data Retention, Your Privacy Rights, Third-Party Services, International Data Transfers, Children's Privacy (COPPA), Data Security, California Privacy Rights (CCPA), and more.
-            </p>
-            <p className="text-center text-gray-600 mt-4">
-              For the complete Privacy Policy document, please scroll down or <a href="#contact" className="text-blue-600 hover:underline">contact us</a> for assistance.
-            </p>
+          <div className="my-12 p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border-2 border-gray-200 shadow-lg">
+            <div className="text-center">
+              <span className="text-4xl mb-4 inline-block">📄</span>
+              <p className="text-gray-700 font-semibold mb-3">
+                Note: This page shows a formatted excerpt of our Privacy Policy.
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                The complete policy includes sections 5-13 covering Data Retention, Your Privacy Rights, Third-Party Services, International Data Transfers, Children's Privacy (COPPA), Data Security, California Privacy Rights (CCPA), and more.
+              </p>
+              <p className="text-gray-600 text-sm mt-4">
+                For the complete Privacy Policy document, please scroll down or <a href="#contact" className="font-semibold hover:underline">contact us</a> for assistance.
+              </p>
+            </div>
           </div>
 
           <section id="coppa" className="mb-8">
@@ -270,9 +293,11 @@ export default function PrivacyPolicyPage() {
               If you are a parent or guardian and believe your child under 18 has provided information to NoCap, please contact us immediately at [INSERT CONTACT EMAIL]. We will delete the child's information from our systems.
             </p>
 
-            <div className="bg-red-50 border-l-4 border-red-400 p-4">
-              <p className="text-gray-800 font-semibold mb-2">IMPORTANT FOR PARENTS:</p>
-              <p className="text-gray-700">
+            <div className="bg-gradient-to-r from-red-100 to-red-50 rounded-xl p-5 border-l-4 border-red-500 shadow-md">
+              <p className="text-gray-900 font-bold mb-3 flex items-center gap-2">
+                <span className="text-red-600">👨‍👩‍👧‍👦</span> IMPORTANT FOR PARENTS:
+              </p>
+              <p className="text-gray-700 leading-relaxed">
                 Even though NoCap requires users to be 18+, we cannot guarantee that underage users will not attempt to access the Service by misrepresenting their age. Parents should monitor their children's online activity and use parental control tools.
               </p>
             </div>
@@ -280,26 +305,52 @@ export default function PrivacyPolicyPage() {
 
           <section id="contact" className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">13. Contact Us</h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 mb-6">
               If you have questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us:
             </p>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="text-gray-700"><strong>Email:</strong> [INSERT YOUR SUPPORT EMAIL]</p>
-              <p className="text-gray-700"><strong>Website:</strong> nocap.bio</p>
-              <p className="text-gray-700"><strong>Address:</strong> [INSERT YOUR BUSINESS ADDRESS]</p>
+            <div className="bg-gradient-to-br from-[#FCF300] to-yellow-100 p-6 rounded-xl border-2 border-black shadow-lg">
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">📧</span>
+                  <div>
+                    <p className="text-black font-bold">Email</p>
+                    <p className="text-gray-900">[INSERT YOUR SUPPORT EMAIL]</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">🌐</span>
+                  <div>
+                    <p className="text-black font-bold">Website</p>
+                    <p className="text-gray-900">nocap.bio</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">📍</span>
+                  <div>
+                    <p className="text-black font-bold">Address</p>
+                    <p className="text-gray-900">[INSERT YOUR BUSINESS ADDRESS]</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="text-gray-700 mt-4">
-              For data subject access requests, account deletion requests, or privacy inquiries, please include "Privacy Request" in the subject line.
+            <p className="text-gray-700 mt-6 text-sm">
+              🔐 For data subject access requests, account deletion requests, or privacy inquiries, please include "Privacy Request" in the subject line.
             </p>
-            <p className="text-gray-700">
-              We will respond to your inquiry within 30 days.
+            <p className="text-gray-700 text-sm">
+              ⏱️ We will respond to your inquiry within 30 days.
             </p>
           </section>
 
-          <div className="border-t-2 border-gray-300 pt-8 mt-12">
-            <p className="text-center text-gray-500 text-sm">
+          <div className="border-t-4 border-[#FCF300] pt-10 mt-12">
+            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 mb-6 border-2 border-blue-500 shadow-lg">
+              <p className="text-black font-bold text-center leading-relaxed">
+                🔒 Your privacy matters to us. We are committed to protecting your personal information and being transparent about our data practices.
+              </p>
+            </div>
+            <p className="text-center text-gray-500 text-sm font-medium">
               © 2026 NoCap. All rights reserved.
             </p>
+          </div>
           </div>
         </div>
       </div>
