@@ -304,7 +304,7 @@ export default function TermsOfUsePage() {
                   <span className="text-xl">📧</span>
                   <div>
                     <p className="text-black font-bold">Email</p>
-                    <p className="text-gray-900">[INSERT YOUR SUPPORT EMAIL]</p>
+                    <p className="text-gray-900">nocap.app1@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -312,13 +312,6 @@ export default function TermsOfUsePage() {
                   <div>
                     <p className="text-black font-bold">Website</p>
                     <p className="text-gray-900">nocap.bio</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-xl">📍</span>
-                  <div>
-                    <p className="text-black font-bold">Address</p>
-                    <p className="text-gray-900">[INSERT YOUR BUSINESS ADDRESS]</p>
                   </div>
                 </div>
               </div>

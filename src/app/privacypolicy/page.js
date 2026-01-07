@@ -79,7 +79,6 @@ export default function PrivacyPolicyPage() {
             <p className="text-gray-700 mb-4">When you create an account and use NoCap, we collect:</p>
             <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
               <li><strong>Username:</strong> A unique username you select during registration</li>
-              <li><strong>Gender:</strong> Your self-identified gender (for profile display purposes)</li>
               <li><strong>Birth Month and Year:</strong> Used to verify you meet the minimum age requirement (18+)</li>
               <li><strong>Age:</strong> Calculated from your birth month and year</li>
               <li><strong>Messages and Content:</strong> Questions, answers, and anonymous messages you send or receive</li>
@@ -152,7 +151,7 @@ export default function PrivacyPolicyPage() {
               <li><strong>Message Delivery:</strong> To deliver anonymous messages and questions to recipients</li>
               <li><strong>Identity Clues:</strong> To provide "clues" about message senders (device info, location, language) to message recipients who have NoCap Pro or unlock this feature</li>
               <li><strong>User Identification:</strong> To assign you a unique NoCap ID for identification within the Service</li>
-              <li><strong>Content Display:</strong> To display your username, gender, and NoCap ID in your profile</li>
+              <li><strong>Content Display:</strong> To display your username and NoCap ID in your profile</li>
             </ul>
 
             <h3 className="text-xl font-semibold text-gray-800 mb-3">3.2 Safety and Security</h3>
@@ -195,21 +194,20 @@ export default function PrivacyPolicyPage() {
             <h3 className="text-xl font-semibold text-gray-800 mb-3">4.1 Information Shared with Other Users</h3>
             <h4 className="text-lg font-semibold text-gray-700 mb-2">Message Metadata ("Clues"):</h4>
             <p className="text-gray-700 mb-4">
-              When you send an anonymous message to another user, the following information is collected and MAY BE SHARED with the message recipient if they have NoCap Pro or unlock the "Reveal Sender Info" feature:
+              When you send an anonymous message to another user, the following information is collected and MAY BE SHARED with the message recipient if they have NoCap Pro or unlock the "Reveal Sender Clues" feature:
             </p>
             <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
               <li>Your device model and operating system</li>
               <li>Your approximate location (city-level)</li>
               <li>Your device language</li>
               <li>Your IP address</li>
-              <li>Your gender (if you have a NoCap account)</li>
               <li>Your NoCap ID (if you have a NoCap account)</li>
               <li>Timestamp when the message was sent</li>
             </ul>
 
             <h4 className="text-lg font-semibold text-gray-700 mb-2">Public Information:</h4>
             <p className="text-gray-700 mb-4">
-              Your username, gender, and NoCap ID are visible to other users within the Service.
+              Your username and NoCap ID are visible to other users within the Service.
             </p>
 
             <h3 className="text-xl font-semibold text-gray-800 mb-3">4.2 Information Shared with Third Parties</h3>
@@ -217,7 +215,7 @@ export default function PrivacyPolicyPage() {
             <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
               <li><strong>Supabase (Backend Service Provider):</strong> We use Supabase for database hosting, authentication, and backend infrastructure. Supabase has access to all data stored in our database. Review Supabase's privacy policy at <a href="https://supabase.com/privacy" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">https://supabase.com/privacy</a></li>
               <li><strong>ip-api.com (Geolocation Service):</strong> We share your IP address with ip-api.com to determine your approximate city-level location. This is a free third-party service. Review ip-api.com's terms at <a href="https://ip-api.com/docs/legal" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">https://ip-api.com/docs/legal</a></li>
-              <li><strong>Social Media Platforms:</strong> When you use the "Share to Story" feature, we may share limited information with Instagram, Snapchat, TikTok, or WhatsApp to enable sharing functionality. This is governed by those platforms' privacy policies.</li>
+              <li><strong>Social Media Platforms:</strong> When you use the "Share to Story" feature, we may share limited information with Instagram or Snapchat to enable sharing functionality. This is governed by those platforms' privacy policies.</li>
               <li><strong>Service Providers:</strong> We may engage other third-party service providers to perform functions on our behalf (e.g., hosting, analytics, customer support). These providers will have access to your information only to perform specific tasks and are obligated to protect your data.</li>
             </ul>
 
@@ -302,7 +300,7 @@ export default function PrivacyPolicyPage() {
                   <span className="text-xl">📧</span>
                   <div>
                     <p className="text-black font-bold">Email</p>
-                    <p className="text-gray-900">[INSERT YOUR SUPPORT EMAIL]</p>
+                    <p className="text-gray-900">nocap.app1@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -310,13 +308,6 @@ export default function PrivacyPolicyPage() {
                   <div>
                     <p className="text-black font-bold">Website</p>
                     <p className="text-gray-900">nocap.bio</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-xl">📍</span>
-                  <div>
-                    <p className="text-black font-bold">Address</p>
-                    <p className="text-gray-900">[INSERT YOUR BUSINESS ADDRESS]</p>
                   </div>
                 </div>
               </div>
