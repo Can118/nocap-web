@@ -34,6 +34,7 @@ export default function TermsOfUsePage() {
               <a href="#account" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">3. Account</a>
               <a href="#service" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">4. Service</a>
               <a href="#conduct" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">5. User Conduct</a>
+              <a href="#liability" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">13. Liability</a>
               <a href="#contact" className="block text-sm text-gray-700 hover:text-[#FCF300] hover:translate-x-1 transition-all duration-200 font-medium">21. Contact</a>
             </nav>
           </div>
@@ -102,7 +103,6 @@ export default function TermsOfUsePage() {
             <p className="text-gray-700 mb-4">To use certain features of the Service, you must create an account by providing:</p>
             <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
               <li>A unique username</li>
-              <li>Your gender</li>
               <li>Your birth month and year</li>
               <li>Any other required information</li>
             </ul>
@@ -150,9 +150,9 @@ export default function TermsOfUsePage() {
               <li>View metadata "clues" about message senders (with NoCap Pro or unlock feature)</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-gray-800 mb-3">4.2 Betting/Games Feature</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">4.2 Games Feature</h3>
             <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
-              <li>Create questions or "bets" that others can rate</li>
+              <li>Create games that others can rate</li>
               <li>Share questions via social media</li>
               <li>View aggregate ratings and statistics</li>
               <li>Receive feedback from web visitors</li>
@@ -160,7 +160,7 @@ export default function TermsOfUsePage() {
 
             <h3 className="text-xl font-semibold text-gray-800 mb-3">4.3 Social Sharing</h3>
             <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
-              <li>Share questions to Instagram Stories, Snapchat, TikTok, or WhatsApp</li>
+              <li>Share questions to Instagram Stories or Snapchat</li>
               <li>Generate shareable images with question content</li>
             </ul>
 
@@ -173,7 +173,7 @@ export default function TermsOfUsePage() {
 
             <h3 className="text-xl font-semibold text-gray-800 mb-3">4.5 NoCap Pro (Optional)</h3>
             <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
-              <li>Unlock "Reveal Sender Info" feature to view full message metadata</li>
+              <li>Unlock "Reveal Sender Clues" feature to view full message metadata</li>
               <li>Access premium features (as they become available)</li>
             </ul>
           </section>
@@ -259,6 +259,25 @@ export default function TermsOfUsePage() {
             </ul>
           </section>
 
+          <section id="liability" className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">13. Limitation of Liability</h2>
+
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">13.1 General Limitation</h3>
+            <p className="text-gray-700 mb-4">
+              Notwithstanding any damages that you might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms and your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by you through the Service or 100 USD if you haven't purchased anything through the Service.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">13.2 Exclusion of Damages</h3>
+            <p className="text-gray-700 mb-4">
+              To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of these Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">13.3 State Law Variations</h3>
+            <p className="text-gray-700 mb-4">
+              Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply. In these states, each party's liability will be limited to the greatest extent permitted by law.
+            </p>
+          </section>
+
           <div className="my-12 p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border-2 border-gray-200 shadow-lg">
             <div className="text-center">
               <span className="text-4xl mb-4 inline-block">📄</span>
@@ -266,7 +285,7 @@ export default function TermsOfUsePage() {
                 Note: This page shows a formatted excerpt of our Terms of Use.
               </p>
               <p className="text-gray-600 text-sm leading-relaxed">
-                The complete terms include sections 6-21 covering Content & Intellectual Property, Anonymous Messaging, User-Generated Content, Content Moderation, NoCap Pro, Disclaimers, Warranties, Liability, Indemnification, Third-Party Services, Termination, Dispute Resolution, Governing Law, and more.
+                The complete terms include sections 6-12 and 14-20 covering Content & Intellectual Property, Anonymous Messaging, User-Generated Content, Content Moderation, NoCap Pro, Disclaimers, Warranties, Indemnification, Third-Party Services, Termination, Dispute Resolution, Governing Law, and more.
               </p>
               <p className="text-gray-600 text-sm mt-4">
                 For the complete Terms of Use document, please scroll down or <a href="#contact" className="font-semibold hover:underline">contact us</a> for assistance.
