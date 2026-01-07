@@ -149,11 +149,6 @@ export default function TermsOfUsePage() {
               <li>Send anonymous messages to other users</li>
               <li>View metadata "clues" about message senders (with NoCap Pro or unlock feature)</li>
             </ul>
-            <div className="bg-gradient-to-r from-red-100 to-red-50 rounded-xl p-5 mb-4 border-l-4 border-red-500 shadow-md">
-              <p className="text-sm text-gray-900 font-semibold leading-relaxed">
-                <span className="text-red-600">⚠️ IMPORTANT:</span> "Anonymous" messaging is NOT fully anonymous. We collect metadata (device info, location, IP address) that may be shared with message recipients.
-              </p>
-            </div>
 
             <h3 className="text-xl font-semibold text-gray-800 mb-3">4.2 Betting/Games Feature</h3>
             <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
@@ -216,11 +211,6 @@ export default function TermsOfUsePage() {
               <li>Attempt to contact, communicate with, or solicit minors</li>
               <li>Share links or content intended to attract minors to the Service</li>
             </ul>
-            <div className="bg-gradient-to-r from-red-100 to-red-50 rounded-xl p-5 mb-4 border-l-4 border-red-500 shadow-md">
-              <p className="text-sm text-gray-900 font-semibold leading-relaxed">
-                <span className="text-red-600">⚠️ IMPORTANT:</span> NoCap is for users 18+ only. Any activity involving minors will result in immediate account termination and reporting to law enforcement.
-              </p>
-            </div>
 
             <h3 className="text-xl font-semibold text-gray-800 mb-3">5.4 Impersonation and Fraud</h3>
             <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">

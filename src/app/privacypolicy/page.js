@@ -107,12 +107,6 @@ export default function PrivacyPolicyPage() {
               <li>Formatted location string (e.g., "near [City Name]")</li>
             </ul>
 
-            <div className="bg-gradient-to-r from-[#FCF300] to-yellow-100 rounded-xl p-5 mb-4 border-l-4 border-yellow-500 shadow-md">
-              <p className="text-sm text-black font-semibold leading-relaxed">
-                <span className="text-yellow-700">⚠️ IMPORTANT:</span> We use IP-based geolocation, NOT GPS. Your precise location is never collected. We use the third-party service ip-api.com to determine your approximate city-level location based on your IP address.
-              </p>
-            </div>
-
             <h4 className="text-lg font-semibold text-gray-700 mb-2">Usage Information:</h4>
             <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-4">
               <li>Message timestamps (when sent and when read)</li>
@@ -212,12 +206,6 @@ export default function PrivacyPolicyPage() {
               <li>Your NoCap ID (if you have a NoCap account)</li>
               <li>Timestamp when the message was sent</li>
             </ul>
-
-            <div className="bg-gradient-to-r from-[#FCF300] to-yellow-100 rounded-xl p-5 mb-4 border-l-4 border-yellow-500 shadow-md">
-              <p className="text-sm text-black font-semibold leading-relaxed">
-                <span className="text-yellow-700">⚠️ IMPORTANT:</span> Even if you send an "anonymous" message, this metadata is collected and can be revealed to the recipient. True anonymity is not guaranteed.
-              </p>
-            </div>
 
             <h4 className="text-lg font-semibold text-gray-700 mb-2">Public Information:</h4>
             <p className="text-gray-700 mb-4">
