@@ -171,8 +171,11 @@ export default function TwoStepFlow({ user, questionId, questionText }) {
 
       {/* CTA Button - Show on both steps with different images */}
       <div className="relative z-10 w-full max-w-lg flex justify-center" style={{ marginTop: '12px' }}>
-        <motion.button
-          className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none"
+        <motion.a
+          href="https://apps.apple.com/app/id6757497386"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full max-w-[320px] bg-transparent border-0 p-0 outline-none block"
           animate={{
             rotate: [0, -2, 2, -2, 0]
           }}
@@ -194,7 +197,7 @@ export default function TwoStepFlow({ user, questionId, questionText }) {
             }
             className="w-full"
           />
-        </motion.button>
+        </motion.a>
       </div>
 
       {/* Footer Links - Independent positioning - Moved down */}

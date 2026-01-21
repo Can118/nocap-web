@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
 export default function HomeScreen() {
-  // Placeholder App Store link - update with actual link when app is released
-  const APP_STORE_LINK = "https://apps.apple.com/app/nocap" // TODO: Update with actual App Store URL
+  // App Store link for NoCap - Truth Games
+  const APP_STORE_LINK = "https://apps.apple.com/app/id6757497386"
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white p-0 md:p-2 lg:p-4">
